@@ -66,15 +66,7 @@ export const Seguridad: React.FC = () => {
                 MEDIDA BÁSICA: X = ANCHO DEL FACETADO DINÁMICO DEL ISOTIPO
               </div>
             </div>
-            <span className="text-[10px] text-gray uppercase tracking-widest font-mono mt-3">
-              Fig. 8.1: Bounding boxes y áreas de protección mínima obligatoria
-            </span>
           </div>
-        </div>
-
-        <div className="border-t border-navy/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>PAUTAS DE REPRODUCCIÓN</span>
-          <span>ZONA DE EXCLUSIÓN</span>
         </div>
       </div>
     </SlideShell>

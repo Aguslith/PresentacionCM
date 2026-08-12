@@ -243,15 +243,7 @@ export const Publicidad: React.FC = () => {
                 {currentCamp.adPreview}
               </motion.div>
             </AnimatePresence>
-            <span className="text-[10px] text-gray uppercase tracking-widest font-mono mt-3">
-              Fig. 23.1: Anuncio publicitario interactivo B2B en formato real
-            </span>
           </div>
-        </div>
-
-        <div className="border-t border-navy/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>PAID MEDIA STRATEGY</span>
-          <span>EMBUDO DE ADQUISICIÓN B2B</span>
         </div>
       </div>
     </SlideShell>

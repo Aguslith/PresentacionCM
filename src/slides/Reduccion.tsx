@@ -74,15 +74,7 @@ export const Reduccion: React.FC = () => {
                 </div>
               </div>
             </div>
-            <span className="text-[10px] text-gray uppercase tracking-widest font-mono block">
-              Fig. 9.1: Medidas físicas mínimas para producción industrial
-            </span>
           </div>
-        </div>
-
-        <div className="border-t border-sky/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>PAUTAS DE REPRODUCCIÓN</span>
-          <span>REDUCCIÓN TÉCNICA</span>
         </div>
       </div>
     </SlideShell>

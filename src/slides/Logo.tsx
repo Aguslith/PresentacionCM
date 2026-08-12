@@ -111,15 +111,7 @@ export const Logo: React.FC = () => {
                 </motion.div>
               </AnimatePresence>
             </MockupCard>
-            <span className="text-[10px] text-gray uppercase tracking-widest font-mono mt-3">
-              Fig. 5.1: Vectorización y arquitectura tridimensional oficial
-            </span>
           </div>
-        </div>
-
-        <div className="border-t border-sky/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>IDENTIDAD CORPORATIVA</span>
-          <span>ESTRUCTURA DE LOGO</span>
         </div>
       </div>
     </SlideShell>

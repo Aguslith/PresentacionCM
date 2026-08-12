@@ -44,12 +44,6 @@ export const Intro: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Technical Footer Accent */}
-        <div className="border-t border-navy/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>ALPACLADD MANUFACTURING GROUP</span>
-          <span>ESTÁNDAR DE EXCELENCIA ISO 9001 / ISO 14001</span>
-        </div>
       </div>
     </SlideShell>
   );

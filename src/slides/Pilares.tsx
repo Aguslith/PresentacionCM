@@ -69,11 +69,6 @@ export const Pilares: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
-        <div className="border-t border-navy/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>FILOSOFÍA DE NEGOCIO B2B</span>
-          <span>ESTABILIDAD OPERACIONAL</span>
-        </div>
       </div>
     </SlideShell>
   );

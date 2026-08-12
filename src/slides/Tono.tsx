@@ -69,11 +69,6 @@ export const Tono: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <div className="border-t border-sky/10 pt-4 mt-6 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>COMUNICACIÓN CORPORATIVA</span>
-          <span>VOICE & TONE GUIDE</span>
-        </div>
       </div>
     </SlideShell>
   );

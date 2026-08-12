@@ -355,11 +355,6 @@ export const Feed: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <div className="border-t border-navy/10 pt-3 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>COMMUNITY MANAGEMENT ESTRATÉGICO</span>
-          <span>PLANIFICACIÓN DE FEED ORGÁNICO</span>
-        </div>
       </div>
     </SlideShell>
   );

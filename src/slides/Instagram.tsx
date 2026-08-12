@@ -87,11 +87,6 @@ export const Instagram: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <div className="border-t border-sky/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>SOCIAL MEDIA ESTRATEGIA</span>
-          <span>PERFIL CORPORATIVO</span>
-        </div>
       </div>
     </SlideShell>
   );

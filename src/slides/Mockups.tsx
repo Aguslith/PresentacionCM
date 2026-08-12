@@ -315,12 +315,6 @@ export const Mockups: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Slide Footer */}
-        <div className="border-t border-navy/10 pt-3 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>APLICACIONES DE IDENTIDAD</span>
-          <span>PIEZAS CORPORATIVAS Y MERCHANDISING B2B</span>
-        </div>
       </div>
     </SlideShell>
   );

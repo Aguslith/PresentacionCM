@@ -297,12 +297,6 @@ export const Versiones: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Slide Footer */}
-        <div className="border-t border-navy/10 pt-3 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>MANUAL DE MARCA // ESPECIFICACIÓN TÉCNICA</span>
-          <span>VERSATILIDAD Y REPRODUCCIÓN DE IDENTIDAD</span>
-        </div>
       </div>
     </SlideShell>
   );

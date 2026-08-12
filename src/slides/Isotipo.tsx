@@ -83,11 +83,6 @@ export const Isotipo: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <div className="border-t border-sky/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>ANÁLISIS MORFOLÓGICO</span>
-          <span>SÍMBOLO CONSOLIDADO</span>
-        </div>
       </div>
     </SlideShell>
   );

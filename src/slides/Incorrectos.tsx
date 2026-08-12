@@ -106,11 +106,6 @@ export const Incorrectos: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <div className="border-t border-sky/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>PAUTAS DE REPRODUCCIÓN</span>
-          <span>ERRORES DE APLICACIÓN</span>
-        </div>
       </div>
     </SlideShell>
   );

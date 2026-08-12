@@ -44,12 +44,6 @@ export const Publico: React.FC = () => {
             </table>
           </div>
         </div>
-
-        {/* Footnote statistics */}
-        <div className="flex justify-between items-center text-[10px] text-gray font-mono pt-4 border-t border-sky/10">
-          <span>SEGMENTACIÓN DE MERCADO B2B</span>
-          <span>REPORTE ANUAL DE TEXTURAS</span>
-        </div>
       </div>
     </SlideShell>
   );

@@ -3,6 +3,7 @@ import { SLIDES } from "../slides/types";
 import type { Slide } from "../slides/types";
 import { ThreadProgress } from "./ThreadProgress";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 interface HorizontalControllerProps {
   renderSlide: (slide: Slide) => React.ReactNode;
@@ -12,24 +13,28 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
   renderSlide,
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const { isBlackAndWhite } = useTheme();
   const totalSlides = SLIDES.length;
   const isNavigatingRef = useRef<boolean>(false);
   const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
 
   // Navigate to specific slide with bounds check
-  const goToSlide = useCallback((index: number) => {
-    const clampedIndex = Math.max(0, Math.min(totalSlides - 1, index));
-    setActiveIndex(clampedIndex);
+  const goToSlide = useCallback(
+    (index: number) => {
+      const clampedIndex = Math.max(0, Math.min(totalSlides - 1, index));
+      setActiveIndex(clampedIndex);
 
-    // Update URL hash
-    const targetSlide = SLIDES[clampedIndex];
-    if (targetSlide) {
-      const newHash = `#slide-${targetSlide.id}`;
-      if (window.location.hash !== newHash) {
-        window.history.replaceState(null, "", newHash);
+      // Update URL hash
+      const targetSlide = SLIDES[clampedIndex];
+      if (targetSlide) {
+        const newHash = `#slide-${targetSlide.id}`;
+        if (window.location.hash !== newHash) {
+          window.history.replaceState(null, "", newHash);
+        }
       }
-    }
-  }, [totalSlides]);
+    },
+    [totalSlides]
+  );
 
   const nextSlide = useCallback(() => {
     goToSlide(activeIndex + 1);
@@ -60,7 +65,6 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore if user is inside an input, textarea or interactive field
       const target = e.target as HTMLElement | null;
       if (
         target &&
@@ -71,10 +75,19 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
         return;
       }
 
-      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
+      if (
+        e.key === "ArrowRight" ||
+        e.key === "ArrowDown" ||
+        e.key === "PageDown" ||
+        e.key === " "
+      ) {
         e.preventDefault();
         nextSlide();
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp") {
+      } else if (
+        e.key === "ArrowLeft" ||
+        e.key === "ArrowUp" ||
+        e.key === "PageUp"
+      ) {
         e.preventDefault();
         prevSlide();
       } else if (e.key === "Home") {
@@ -93,7 +106,6 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
   // Smart Mouse Wheel / Trackpad listener with precise cooldown lock
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // Check if mouse is inside an internally scrollable element that has room to scroll
       let currentEl = e.target as HTMLElement | null;
       let isInsideScrollable = false;
       while (currentEl && currentEl !== document.body) {
@@ -102,9 +114,10 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
           (window.getComputedStyle(currentEl).overflowY === "auto" ||
             window.getComputedStyle(currentEl).overflowY === "scroll")
         ) {
-          // If the element can still scroll in the wheel direction, let it scroll internally
           const isAtTop = currentEl.scrollTop === 0;
-          const isAtBottom = currentEl.scrollHeight - currentEl.scrollTop <= currentEl.clientHeight + 2;
+          const isAtBottom =
+            currentEl.scrollHeight - currentEl.scrollTop <=
+            currentEl.clientHeight + 2;
           if ((e.deltaY < 0 && !isAtTop) || (e.deltaY > 0 && !isAtBottom)) {
             isInsideScrollable = true;
             break;
@@ -117,7 +130,6 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
 
       const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
 
-      // Threshold to trigger slide change
       if (Math.abs(delta) > 20) {
         if (isNavigatingRef.current) {
           e.preventDefault();
@@ -133,10 +145,9 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
           prevSlide();
         }
 
-        // Lock for 500ms to guarantee single slide transition per wheel gesture
         setTimeout(() => {
           isNavigatingRef.current = false;
-        }, 500);
+        }, 450);
       }
     };
 
@@ -171,18 +182,14 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
 
       touchStartRef.current = null;
 
-      // Minimum swipe distance of 40px and maximum time of 800ms
       if (timeDiff < 800) {
-        // Horizontal swipe dominance
-        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
           if (diffX < 0) {
             nextSlide();
           } else {
             prevSlide();
           }
-        }
-        // Vertical swipe fallback on mobile if dominant
-        else if (Math.abs(diffY) > 50 && Math.abs(diffY) > Math.abs(diffX)) {
+        } else if (Math.abs(diffY) > 45 && Math.abs(diffY) > Math.abs(diffX)) {
           if (diffY < 0) {
             nextSlide();
           } else {
@@ -200,17 +207,17 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
     };
   }, [nextSlide, prevSlide]);
 
-  const currentSlide = (SLIDES[activeIndex] ?? SLIDES[0]) as Slide;
   const progressRatio = totalSlides > 1 ? activeIndex / (totalSlides - 1) : 0;
 
   return (
-    <div className="relative w-screen h-[100dvh] overflow-hidden select-none bg-navy">
+    <div
+      className={`relative w-screen h-[100dvh] overflow-hidden select-none transition-colors duration-500 ${
+        isBlackAndWhite ? "bg-black" : "bg-navy"
+      }`}
+    >
       {/* Top Thread Progress Bar */}
       <ThreadProgress
         progress={progressRatio}
-        currentSlideName={currentSlide.title}
-        currentSlideNumber={currentSlide.n}
-        totalSlides={totalSlides}
         onSeek={(targetProgress) => {
           const targetIndex = Math.round(targetProgress * (totalSlides - 1));
           goToSlide(targetIndex);
@@ -235,13 +242,13 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
         ))}
       </div>
 
-      {/* Floating UI: Navigation Arrows (Responsive for Mobile & Desktop) */}
-      <div className="fixed bottom-3 right-3 sm:bottom-8 sm:right-8 z-40 flex space-x-2 pointer-events-auto">
+      {/* Floating Navigation Arrows */}
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex space-x-2 pointer-events-auto">
         <button
           onClick={prevSlide}
           disabled={activeIndex === 0}
           aria-label="Diapositiva anterior"
-          className="p-2 sm:p-3 rounded-full bg-navy/85 hover:bg-navy border border-sky/25 text-sky hover:text-white disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-navy/60 backdrop-blur-md"
+          className="p-2 sm:p-2.5 rounded-full bg-black/60 hover:bg-black/90 border border-white/20 text-white disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300 shadow-xl backdrop-blur-md"
         >
           <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
@@ -249,40 +256,32 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
           onClick={nextSlide}
           disabled={activeIndex === totalSlides - 1}
           aria-label="Diapositiva siguiente"
-          className="p-2 sm:p-3 rounded-full bg-navy/85 hover:bg-navy border border-sky/25 text-sky hover:text-white disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-navy/60 backdrop-blur-md"
+          className="p-2 sm:p-2.5 rounded-full bg-black/60 hover:bg-black/90 border border-white/20 text-white disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300 shadow-xl backdrop-blur-md"
         >
           <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
 
-      {/* Technical Dot Navigation (Vertical Bar on Left) */}
-      <div className="fixed left-3 sm:left-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col space-y-2.5 pointer-events-auto">
+      {/* Clean Minimalist Dot Navigation (Left edge) */}
+      <div className="fixed left-3 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col space-y-2 pointer-events-auto">
         {SLIDES.map((slide, idx) => {
           const isActive = idx === activeIndex;
           return (
             <button
               key={slide.id}
               onClick={() => goToSlide(idx)}
-              aria-label={`Ir al slide ${slide.n}: ${slide.title}`}
-              className="group flex items-center focus:outline-none p-1"
+              aria-label={`Ir al slide ${slide.n}`}
+              className="p-1 focus:outline-none"
             >
-              {/* Dot Shape */}
               <div
-                className={`w-1.5 h-1.5 rounded-sm transition-all duration-300 ${
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                   isActive
-                    ? "bg-sky scale-150 rotate-45 shadow-[0_0_8px_#5fa8d3]"
-                    : "bg-gray/40 group-hover:bg-sky/60"
+                    ? isBlackAndWhite
+                      ? "bg-white scale-150 shadow-[0_0_6px_#ffffff]"
+                      : "bg-sky scale-150 shadow-[0_0_6px_#5fa8d3]"
+                    : "bg-white/25 hover:bg-white/60"
                 }`}
               />
-
-              {/* Technical Indicator Label on Hover */}
-              <span
-                className={`ml-3 text-[9px] font-mono tracking-widest uppercase bg-navy/90 border border-sky/15 px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 translate-x-2 group-hover:translate-x-0 ${
-                  isActive ? "text-sky border-sky/40" : "text-gray"
-                }`}
-              >
-                {String(slide.n).padStart(2, "0")}. {slide.id}
-              </span>
             </button>
           );
         })}

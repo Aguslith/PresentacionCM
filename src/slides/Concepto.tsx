@@ -114,9 +114,6 @@ export const Concepto: React.FC = () => {
                 <span className="text-sky font-semibold">Tensión: OK</span>
               </div>
             </div>
-            <span className="text-[10px] text-gray uppercase tracking-widest font-mono mt-3">
-              Fig. 3.1: Proceso de torsión de filamento continuo
-            </span>
           </div>
         </div>
       </div>

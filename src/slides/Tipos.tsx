@@ -59,11 +59,6 @@ export const Tipos: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <div className="border-t border-sky/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>ESPECIFICACIÓN TIPOGRÁFICA</span>
-          <span>RALEWAY GOOGLE FONTS</span>
-        </div>
       </div>
     </SlideShell>
   );

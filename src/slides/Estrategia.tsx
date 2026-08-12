@@ -55,14 +55,6 @@ export const Estrategia: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Timeline representation */}
-        <div className="border-t border-navy/10 pt-4 mt-6">
-          <div className="flex justify-between items-center text-[10px] text-gray font-mono">
-            <span>PLAN ESTRATÉGICO 2026/2027</span>
-            <span>DIRECCIÓN COMERCIAL</span>
-          </div>
-        </div>
       </div>
     </SlideShell>
   );

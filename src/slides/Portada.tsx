@@ -73,13 +73,6 @@ export const Portada: React.FC = () => {
               />
             </svg>
           </div>
-
-          {/* Overlay Coordinates */}
-          <div className="absolute bottom-0 right-4 text-[9px] font-mono text-gray/80 tracking-widest text-right">
-            <div>SPINDLE SYSTEM V.1</div>
-            <div>RPM: 12,000 max</div>
-            <div>COORD: [X-900, Y-223]</div>
-          </div>
         </div>
       </div>
     </SlideShell>

@@ -227,15 +227,7 @@ export const Stories: React.FC = () => {
                 <span>ALPACLADD LAB</span>
               </div>
             </div>
-            <span className="text-[10px] text-gray uppercase tracking-widest font-mono mt-3">
-              Fig. 21.1: Simulador móvil de stickers interactivos
-            </span>
           </div>
-        </div>
-
-        <div className="border-t border-sky/10 pt-4 flex justify-between items-center text-[10px] text-gray font-mono">
-          <span>SOCIAL MEDIA ESTRATEGIA</span>
-          <span>HISTORIAS INTERACTIVAS</span>
         </div>
       </div>
     </SlideShell>
