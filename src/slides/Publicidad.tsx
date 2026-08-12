@@ -28,12 +28,12 @@ export const Publicidad: React.FC = () => {
               <img src="/logotipo.png" alt="ALPACLADD" className="w-full h-full object-contain" />
             </div>
             <div>
-              <span className="text-xs font-bold font-mono text-off block">alpacladd.hilados</span>
-              <span className="text-[9px] text-gray font-mono">Publicidad • Patrocinado</span>
+              <span className="text-xs font-bold font-mono text-white block">alpacladd.hilados</span>
+              <span className="text-[9px] text-slate-300 font-mono">Publicidad • Patrocinado</span>
             </div>
           </div>
 
-          <p className="text-xs text-off/90 font-light leading-relaxed">
+          <p className="text-xs text-slate-200 font-normal leading-relaxed">
             🧵 ¿Cansado del pilling y las roturas en telar? Descubrí la regularidad milimétrica de nuestros hilados peinados con purgado electrónico.
           </p>
 
@@ -48,8 +48,8 @@ export const Publicidad: React.FC = () => {
 
           <div className="flex justify-between items-center bg-navy/90 border border-sky/15 p-2.5 rounded-lg">
             <div>
-              <span className="text-[8px] font-mono text-gray block uppercase">ALPACLADD.COM/MUESTRAS</span>
-              <span className="text-[11px] font-bold text-off uppercase font-mono">Prueba de Torsión en Máquina</span>
+              <span className="text-[8px] font-mono text-slate-300 block uppercase">ALPACLADD.COM/MUESTRAS</span>
+              <span className="text-[11px] font-bold text-white uppercase font-mono">Prueba de Torsión en Máquina</span>
             </div>
             <button className="py-1.5 px-3 bg-sky text-navy text-[10px] font-bold font-mono uppercase rounded hover:bg-white transition-colors">
               Registrarme
@@ -78,12 +78,12 @@ export const Publicidad: React.FC = () => {
               <img src="/logotipo.png" alt="ALPACLADD" className="w-full h-full object-contain" />
             </div>
             <div>
-              <span className="text-xs font-bold font-mono text-off block">alpacladd.hilados</span>
-              <span className="text-[9px] text-gray font-mono">Publicidad • Video Reel</span>
+              <span className="text-xs font-bold font-mono text-white block">alpacladd.hilados</span>
+              <span className="text-[9px] text-slate-300 font-mono">Publicidad • Video Reel</span>
             </div>
           </div>
 
-          <p className="text-xs text-off/90 font-light leading-relaxed">
+          <p className="text-xs text-slate-200 font-normal leading-relaxed">
             ⚡ Precisión que no se detiene. Mirá cómo el sensor infrarrojo purifica cada metro de hilo antes de ser embobinado.
           </p>
 
@@ -99,8 +99,8 @@ export const Publicidad: React.FC = () => {
 
           <div className="flex justify-between items-center bg-navy/90 border border-blue/20 p-2.5 rounded-lg">
             <div>
-              <span className="text-[8px] font-mono text-gray block uppercase">ALPACLADD.COM/TECNOLOGIA</span>
-              <span className="text-[11px] font-bold text-off uppercase font-mono">Reporte de Laboratorio ISO</span>
+              <span className="text-[8px] font-mono text-slate-300 block uppercase">ALPACLADD.COM/TECNOLOGIA</span>
+              <span className="text-[11px] font-bold text-white uppercase font-mono">Reporte de Laboratorio ISO</span>
             </div>
             <button className="py-1.5 px-3 bg-blue text-white text-[10px] font-bold font-mono uppercase rounded hover:bg-sky transition-colors">
               Descargar PDF
@@ -130,23 +130,23 @@ export const Publicidad: React.FC = () => {
             </div>
             <div>
               <span className="text-xs font-bold font-mono text-navy block">ALPACLADD Hilados</span>
-              <span className="text-[9px] text-gray font-mono">Promocionado • LinkedIn B2B</span>
+              <span className="text-[9px] text-slate-500 font-mono font-medium">Promocionado • LinkedIn B2B</span>
             </div>
           </div>
 
-          <p className="text-xs text-navy/80 font-light leading-relaxed">
+          <p className="text-xs text-slate-700 font-normal leading-relaxed">
             🏭 Abastecimiento continuo para talleres de confección y marcas consolidadas. Cotizá tu partida con condiciones comerciales a 30/60 días.
           </p>
 
           <div className="relative aspect-video rounded-lg overflow-hidden bg-navy p-4 flex flex-col justify-center text-center text-white">
             <span className="text-[8px] font-mono text-sky tracking-[0.2em] uppercase">CONFIANZA OPERACIONAL</span>
             <div className="text-base font-bold uppercase mt-1">LOTES CERTIFICADOS SIN VARIACIÓN</div>
-            <span className="text-[9px] text-gray font-mono mt-1">Garantía de reposición en 48hs</span>
+            <span className="text-[9px] text-slate-300 font-mono mt-1">Garantía de reposición en 48hs</span>
           </div>
 
           <div className="flex justify-between items-center bg-navy/5 border border-navy/10 p-2.5 rounded-lg">
             <div>
-              <span className="text-[8px] font-mono text-gray block uppercase">ALPACLADD.COM/COTIZADOR</span>
+              <span className="text-[8px] font-mono text-slate-500 font-medium block uppercase">ALPACLADD.COM/COTIZADOR</span>
               <span className="text-[11px] font-bold text-navy uppercase font-mono">Lista de Precios Mayoristas</span>
             </div>
             <button className="py-1.5 px-3 bg-navy text-white text-[10px] font-bold font-mono uppercase rounded hover:bg-blue transition-colors">
@@ -166,22 +166,22 @@ export const Publicidad: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
           {/* Strategy Details Column */}
           <div className="md:col-span-6 text-left space-y-4">
-            <p className="text-xs md:text-sm text-gray font-light leading-relaxed">
-              Estrategia de <strong>Paid Media B2B</strong> diseñada con un embudo de 3 etapas en Meta Ads y LinkedIn para captar directores de producción y confeccionistas textiles.
+            <p className="text-xs md:text-sm text-slate-800 font-normal leading-relaxed">
+              Estrategia de <strong className="text-navy">Paid Media B2B</strong> diseñada con un embudo de 3 etapas en Meta Ads y LinkedIn para captar directores de producción y confeccionistas textiles.
             </p>
 
             {/* Campaign Selector Buttons */}
             <div className="space-y-1.5">
-              <span className="text-[10px] font-mono text-gray uppercase tracking-widest block">ETAPAS DEL EMBUDO PUBLICITARIO</span>
+              <span className="text-[10px] font-mono text-slate-700 uppercase tracking-widest block font-bold">ETAPAS DEL EMBUDO PUBLICITARIO</span>
               <div className="grid grid-cols-3 gap-2">
                 {(["muestras", "tecnologia", "retargeting"] as AdCampaignType[]).map((c) => (
                   <button
                     key={c}
                     onClick={() => setActiveAd(c)}
-                    className={`py-2 px-1.5 text-[9px] font-mono uppercase tracking-wider rounded border transition-all duration-300 ${
+                    className={`py-2 px-1.5 text-[9px] font-mono uppercase tracking-wider rounded-lg border transition-all duration-300 ${
                       activeAd === c
-                        ? "bg-blue border-blue text-white shadow-md"
-                        : "bg-navy/5 border-navy/10 text-gray hover:border-blue/40"
+                        ? "bg-blue border-blue text-white shadow-md font-bold"
+                        : "bg-white border-navy/15 text-slate-700 hover:border-blue/50 font-medium shadow-sm"
                     }`}
                   >
                     {c === "muestras" && "01. Muestras (TOFU)"}
@@ -204,14 +204,14 @@ export const Publicidad: React.FC = () => {
               >
                 <div className="flex justify-between items-center text-[9px] font-mono border-b border-navy/10 pb-1.5">
                   <span className="font-bold text-blue uppercase">{currentCamp.tag}</span>
-                  <span className="text-gray">{currentCamp.channel}</span>
+                  <span className="text-slate-500 font-semibold">{currentCamp.channel}</span>
                 </div>
 
                 <div>
                   <h4 className="text-sm font-bold text-navy uppercase font-sans">
                     {currentCamp.title}
                   </h4>
-                  <p className="text-xs text-gray font-light mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-700 font-normal mt-1 leading-relaxed">
                     {currentCamp.objective}
                   </p>
                 </div>
@@ -219,8 +219,8 @@ export const Publicidad: React.FC = () => {
                 {/* KPIs Row */}
                 <div className="grid grid-cols-3 gap-2 pt-2 border-t border-navy/10">
                   {currentCamp.kpis.map((kpi, idx) => (
-                    <div key={idx} className="bg-navy/5 p-2 rounded text-center">
-                      <span className="block text-[8px] font-mono text-gray uppercase tracking-wider">{kpi.label}</span>
+                    <div key={idx} className="bg-navy/5 p-2 rounded-lg text-center border border-navy/5">
+                      <span className="block text-[8px] font-mono text-slate-600 uppercase tracking-wider font-semibold">{kpi.label}</span>
                       <span className="text-xs font-bold font-mono text-blue mt-0.5 block">{kpi.value}</span>
                     </div>
                   ))}

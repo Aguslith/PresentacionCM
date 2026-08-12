@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SlideShell } from "../components/SlideShell";
 import { Award, Check, AlertCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const Stories: React.FC = () => {
   const [activeStory, setActiveStory] = useState<"encuesta" | "quiz">("encuesta");
@@ -11,6 +12,7 @@ export const Stories: React.FC = () => {
 
   // Quiz States
   const [quizSelected, setQuizSelected] = useState<number | null>(null);
+  const quizOptions = ["Splicer neumático", "Purgador óptico", "Cardador rotativo"];
   const quizCorrectIndex = 1; // "Purgador óptico"
 
   const handlePollVote = (option: "a" | "b") => {
@@ -40,19 +42,19 @@ export const Stories: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
           {/* Info and tabs */}
           <div className="md:col-span-5 text-left space-y-5">
-            <p className="text-sm text-gray font-light leading-relaxed">
+            <p className="text-sm text-slate-200 font-normal leading-relaxed">
               Las Stories de Instagram se planifican con stickers interactivos para incentivar la participación (engagement) de técnicos, confeccionistas y diseñadores de moda.
             </p>
 
             <div className="flex flex-col space-y-2">
-              <span className="text-[10px] font-mono text-gray uppercase tracking-widest">SELECCIONAR STORY</span>
+              <span className="text-[10px] font-mono text-slate-300 uppercase tracking-widest font-semibold">SELECCIONAR STORY</span>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setActiveStory("encuesta")}
                   className={`py-2 px-1 text-[10px] font-mono uppercase tracking-wider rounded border transition-all duration-300 ${
                     activeStory === "encuesta"
-                      ? "bg-sky/20 border-sky text-sky"
-                      : "bg-navy/40 border-sky/15 text-gray hover:border-sky/40"
+                      ? "bg-sky/25 border-sky text-sky font-bold shadow-md shadow-sky/10"
+                      : "bg-navy/50 border-sky/20 text-slate-300 hover:border-sky/40 hover:text-white"
                   }`}
                 >
                   Story 1: Encuesta
@@ -61,8 +63,8 @@ export const Stories: React.FC = () => {
                   onClick={() => setActiveStory("quiz")}
                   className={`py-2 px-1 text-[10px] font-mono uppercase tracking-wider rounded border transition-all duration-300 ${
                     activeStory === "quiz"
-                      ? "bg-sky/20 border-sky text-sky"
-                      : "bg-navy/40 border-sky/15 text-gray hover:border-sky/40"
+                      ? "bg-sky/25 border-sky text-sky font-bold shadow-md shadow-sky/10"
+                      : "bg-navy/50 border-sky/20 text-slate-300 hover:border-sky/40 hover:text-white"
                   }`}
                 >
                   Story 2: Trivia Quiz
@@ -70,9 +72,9 @@ export const Stories: React.FC = () => {
               </div>
             </div>
 
-            <div className="border border-sky/15 bg-sky/5 p-4 rounded-lg">
+            <div className="border border-sky/20 bg-sky/5 p-4 rounded-lg shadow-sm">
               <h4 className="text-xs font-mono font-bold text-sky uppercase mb-1">STORY ESTRATEGIA B2B</h4>
-              <p className="text-[11px] text-gray/80 leading-relaxed font-light font-mono">
+              <p className="text-[11px] text-slate-300 leading-relaxed font-normal font-mono">
                 Preguntas orientadas a resolver dolores específicos del tejedor. Posicionamos a ALPACLADD como la solución obvia frente a los competidores tradicionales.
               </p>
             </div>
@@ -91,12 +93,12 @@ export const Stories: React.FC = () => {
                   <div className="w-5 h-5 rounded-full border border-sky/80 flex items-center justify-center bg-navy overflow-hidden p-0.5">
                     <img src="/logotipo.png" alt="ALPACLADD" className="w-full h-full object-contain" />
                   </div>
-                  <span className="text-[8px] font-bold text-off font-mono">alpacladd.hilados</span>
-                  <span className="text-[8px] text-gray font-mono">3 h</span>
+                  <span className="text-[8px] font-bold text-white font-mono">alpacladd.hilados</span>
+                  <span className="text-[8px] text-slate-400 font-mono">3 h</span>
                 </div>
                 <div className="flex space-x-1">
-                  <div className="w-1.5 h-1.5 rounded-full bg-off/20" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-off/20" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
                 </div>
               </div>
 
@@ -108,13 +110,13 @@ export const Stories: React.FC = () => {
                     <span className="inline-block border border-sky/20 bg-sky/5 px-2 py-0.5 rounded text-[7px] tracking-widest text-sky uppercase font-mono">
                       PREGUNTA DE PRECISIÓN
                     </span>
-                    <h4 className="text-sm font-bold text-off uppercase tracking-wider leading-snug">
+                    <h4 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">
                       ¿Qué parámetro afecta más la rentabilidad de tu taller textil?
                     </h4>
 
                     {/* Interactive Poll Sticker */}
                     <div className="bg-white text-navy rounded-2xl p-4 shadow-xl border border-sky/20 space-y-3 mx-2">
-                      <p className="text-[9px] font-mono font-bold text-gray uppercase tracking-wider">
+                      <p className="text-[9px] font-mono font-bold text-slate-600 uppercase tracking-wider">
                         VOTACIÓN ALPACLADD
                       </p>
 
@@ -128,16 +130,17 @@ export const Stories: React.FC = () => {
                               : "bg-navy/5 border-navy/10 hover:border-sky/40"
                           }`}
                         >
+                          <div className="flex justify-between items-center z-10 relative">
+                            <span className="text-navy">Roturas en máquina</span>
+                            {pollVoted && <span className="text-blue font-bold">{percentA}%</span>}
+                          </div>
                           {pollVoted && (
-                            <div
-                              className="absolute top-0 left-0 bottom-0 bg-sky/25 transition-all duration-500"
-                              style={{ width: `${percentA}%` }}
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${percentA}%` }}
+                              className="absolute top-0 left-0 bottom-0 bg-blue/15 z-0"
                             />
                           )}
-                          <div className="flex justify-between items-center z-10 relative">
-                            <span>Resistencia a la rotura</span>
-                            {pollVoted && <span className="text-sky font-bold">{percentA}%</span>}
-                          </div>
                         </button>
 
                         {/* Option B */}
@@ -149,44 +152,49 @@ export const Stories: React.FC = () => {
                               : "bg-navy/5 border-navy/10 hover:border-sky/40"
                           }`}
                         >
+                          <div className="flex justify-between items-center z-10 relative">
+                            <span className="text-navy">Pilling post-lavado</span>
+                            {pollVoted && <span className="text-blue font-bold">{percentB}%</span>}
+                          </div>
                           {pollVoted && (
-                            <div
-                              className="absolute top-0 left-0 bottom-0 bg-sky/25 transition-all duration-500"
-                              style={{ width: `${percentB}%` }}
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${percentB}%` }}
+                              className="absolute top-0 left-0 bottom-0 bg-blue/15 z-0"
                             />
                           )}
-                          <div className="flex justify-between items-center z-10 relative">
-                            <span>Regularidad del espesor</span>
-                            {pollVoted && <span className="text-sky font-bold">{percentB}%</span>}
-                          </div>
                         </button>
                       </div>
                     </div>
                   </div>
                 ) : (
                   /* Quiz Content */
-                  <div className="space-y-4 w-full">
+                  <div className="space-y-6 w-full">
                     <span className="inline-block border border-sky/20 bg-sky/5 px-2 py-0.5 rounded text-[7px] tracking-widest text-sky uppercase font-mono">
                       TRIVIA TÉCNICA
                     </span>
-                    <h4 className="text-xs font-bold text-off uppercase tracking-wider leading-snug">
-                      ¿Qué sistema elimina neps y fallas ópticas en la conera?
+                    <h4 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">
+                      ¿Qué componente de hilatura elimina los nudos y partes finas?
                     </h4>
 
                     {/* Interactive Quiz Sticker */}
-                    <div className="bg-white text-navy rounded-2xl p-4 shadow-xl border border-sky/20 space-y-2 mx-1">
-                      {["Splicer neumático", "Purgador óptico", "Cardador rotativo"].map((opt, idx) => {
-                        const isCorrect = idx === quizCorrectIndex;
+                    <div className="bg-white text-navy rounded-2xl p-4 shadow-xl border border-sky/20 space-y-2 mx-2">
+                      <p className="text-[9px] font-mono font-bold text-slate-600 uppercase tracking-wider">
+                        QUIZ TEXTIL EXPERTO
+                      </p>
+
+                      {quizOptions.map((opt, idx) => {
+                        let btnStyle = "bg-navy/5 border-navy/10 text-navy hover:border-sky/40";
                         const isSelected = quizSelected === idx;
-                        let btnStyle = "bg-navy/5 border-navy/10 hover:border-sky/40";
-                        
+                        const isCorrect = idx === quizCorrectIndex;
+
                         if (quizSelected !== null) {
                           if (isCorrect) {
-                            btnStyle = "bg-green-100 border-green-500 text-green-700 shadow-inner";
+                            btnStyle = "bg-green-50 border-green-500 text-green-800 font-bold";
                           } else if (isSelected) {
-                            btnStyle = "bg-red-100 border-red-500 text-red-700 shadow-inner";
+                            btnStyle = "bg-red-50 border-red-500 text-red-800 font-bold";
                           } else {
-                            btnStyle = "bg-navy/5 border-navy/5 opacity-55";
+                            btnStyle = "bg-slate-50 border-slate-200 text-slate-400 opacity-60";
                           }
                         }
 
@@ -204,10 +212,10 @@ export const Stories: React.FC = () => {
                       })}
                       
                       {quizSelected !== null && (
-                        <div className="text-[8px] text-gray/80 text-left font-light mt-2 border-t border-navy/5 pt-1.5 font-sans leading-relaxed">
+                        <div className="text-[9px] text-slate-600 text-left font-normal mt-2 border-t border-navy/5 pt-1.5 font-sans leading-relaxed">
                           {quizSelected === quizCorrectIndex ? (
                             <span className="text-green-600 font-semibold flex items-center">
-                              <Award className="w-3 h-3 mr-1" /> ¡Correcto! El purgador óptico detecta calibres defectuosos.
+                              <Award className="w-3.5 h-3.5 mr-1" /> ¡Correcto! El purgador óptico detecta calibres defectuosos.
                             </span>
                           ) : (
                             <span className="text-red-500 font-semibold">
@@ -222,7 +230,7 @@ export const Stories: React.FC = () => {
               </div>
 
               {/* Bottom bar stories */}
-              <div className="flex justify-between items-center text-[7px] text-gray font-mono border-t border-sky/10 pt-2 z-10">
+              <div className="flex justify-between items-center text-[8px] text-slate-300 font-mono border-t border-sky/15 pt-2 z-10">
                 <span>ENVIAR MENSAJE...</span>
                 <span>ALPACLADD LAB</span>
               </div>

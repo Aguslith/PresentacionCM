@@ -102,14 +102,14 @@ export const Paleta: React.FC = () => {
                   <span className="block text-[10px] sm:text-[11px] font-bold text-blue font-mono">
                     {color.hex}
                   </span>
-                  <div className="text-[8px] sm:text-[9px] font-mono text-gray space-y-0.5 hidden xs:block">
+                  <div className="text-[8px] sm:text-[9px] font-mono text-slate-600 space-y-0.5 hidden xs:block font-medium">
                     <div>{color.rgb}</div>
                     <div>{color.cmyk}</div>
                   </div>
                 </div>
 
                 {/* Role text */}
-                <div className="border-t border-navy/10 pt-1.5 sm:pt-2 text-[8px] sm:text-[9px] font-mono text-gray/80 leading-tight truncate">
+                <div className="border-t border-navy/10 pt-1.5 sm:pt-2 text-[8px] sm:text-[9px] font-mono text-slate-700 leading-tight font-medium">
                   {color.role}
                 </div>
               </div>

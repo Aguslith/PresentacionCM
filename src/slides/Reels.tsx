@@ -107,21 +107,21 @@ export const Reels: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
           {/* Description & selectors */}
           <div className="md:col-span-6 text-left space-y-5">
-            <p className="text-sm text-gray font-light leading-relaxed">
+            <p className="text-sm text-slate-800 font-normal leading-relaxed">
               El contenido en formato Reel destaca la maquinaria pesada de la fábrica y los controles microscópicos de laboratorio. Atrae audiencias interesadas en el rigor operacional.
             </p>
 
             <div className="flex flex-col space-y-2">
-              <span className="text-[10px] font-mono text-gray uppercase tracking-widest">TEMAS DE REEL B2B</span>
+              <span className="text-[10px] font-mono text-slate-700 uppercase tracking-widest font-bold">TEMAS DE REEL B2B</span>
               <div className="flex flex-col space-y-2">
                 {(["algodon", "conera", "calidad"] as ReelType[]).map((r) => (
                   <button
                     key={r}
                     onClick={() => setReel(r)}
-                    className={`py-2 px-3 text-[10px] font-mono text-left uppercase tracking-wider rounded border transition-all duration-300 flex justify-between items-center ${
+                    className={`py-2 px-3 text-[10px] font-mono text-left uppercase tracking-wider rounded-lg border transition-all duration-300 flex justify-between items-center ${
                       reel === r
-                        ? "bg-blue border-blue text-white"
-                        : "bg-navy/5 border-navy/10 text-gray hover:border-blue/40"
+                        ? "bg-blue border-blue text-white shadow-md font-bold"
+                        : "bg-white border-navy/15 text-slate-700 hover:border-blue/50 font-medium"
                     }`}
                   >
                     <span>{reelInfo[r].title}</span>

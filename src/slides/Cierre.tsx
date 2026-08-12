@@ -12,11 +12,11 @@ export const Cierre: React.FC = () => {
           <span className="inline-block border border-sky/30 bg-sky/5 px-3 py-1 text-[10px] tracking-[0.2em] text-sky uppercase font-mono rounded">
             CENTRO DE ATENCIÓN INDUSTRIAL
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wider text-off leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wider text-white leading-tight">
             INNOVACIÓN <br />
             <span className="text-sky">TEXTIL B2B</span>
           </h1>
-          <p className="text-sm text-gray max-w-md font-light leading-relaxed">
+          <p className="text-sm md:text-base text-slate-200 max-w-md font-normal leading-relaxed">
             Estamos listos para abastecer su línea de confección con hilados de máxima resistencia y regularidad. Solicite su muestra técnica sin cargo para testeo en máquina.
           </p>
 

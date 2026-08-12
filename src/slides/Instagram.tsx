@@ -40,27 +40,27 @@ export const Instagram: React.FC = () => {
               {/* Stats */}
               <div className="flex space-x-6 text-xs font-mono">
                 <div>
-                  <span className="font-bold text-off">112</span> <span className="text-gray">posts</span>
+                  <span className="font-bold text-white">112</span> <span className="text-slate-300">posts</span>
                 </div>
                 <div>
-                  <span className="font-bold text-off">8,421</span> <span className="text-gray">followers</span>
+                  <span className="font-bold text-white">8,421</span> <span className="text-slate-300">followers</span>
                 </div>
                 <div>
-                  <span className="font-bold text-off">341</span> <span className="text-gray">following</span>
+                  <span className="font-bold text-white">341</span> <span className="text-slate-300">following</span>
                 </div>
               </div>
 
               {/* Bio */}
-              <div className="text-xs text-gray space-y-1 font-sans">
-                <span className="font-bold text-off block">ALPACLADD — Fábrica de Hilados</span>
-                <p className="font-light leading-relaxed">
+              <div className="text-xs text-slate-200 space-y-1 font-sans">
+                <span className="font-bold text-white block">ALPACLADD — Fábrica de Hilados</span>
+                <p className="font-normal leading-relaxed">
                   Precisión textil en hilados peinados y continuos. Algodón, Lana y Alpaca de grado industrial. 🏭 Planta automatizada en Buenos Aires. 🧶
                 </p>
                 <a
                   href="https://alpacladd.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sky font-mono font-medium hover:underline block"
+                  className="text-sky font-mono font-bold hover:underline block"
                 >
                   linktr.ee/alpacladd.hilados
                 </a>
@@ -70,16 +70,16 @@ export const Instagram: React.FC = () => {
 
           {/* Highlights / Stories Destacadas */}
           <div className="space-y-3">
-            <h4 className="text-[10px] font-mono font-bold text-gray uppercase tracking-widest">
+            <h4 className="text-[10px] font-mono font-bold text-slate-300 uppercase tracking-widest">
               HISTORIAS DESTACADAS
             </h4>
             <div className="flex space-x-6 overflow-x-auto no-scrollbar py-2">
               {highlights.map((h, idx) => (
                 <div key={idx} className="flex flex-col items-center space-y-1.5 shrink-0">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy border border-sky/20 flex items-center justify-center shadow hover:border-sky transition-colors duration-300">
-                    <div className="p-2.5 bg-sky/5 rounded-full">{h.icon}</div>
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-navy border border-sky/30 flex items-center justify-center shadow hover:border-sky transition-colors duration-300">
+                    <div className="p-2.5 bg-sky/10 rounded-full">{h.icon}</div>
                   </div>
-                  <span className="text-[9px] font-mono text-gray tracking-wider uppercase">
+                  <span className="text-[10px] font-mono text-slate-300 tracking-wider uppercase font-semibold">
                     {h.label}
                   </span>
                 </div>

@@ -57,12 +57,12 @@ export const Pilares: React.FC = () => {
                     {p.title}
                   </h4>
                 </div>
-                <p className="text-xs text-gray font-light leading-relaxed">
+                <p className="text-xs text-slate-700 font-normal leading-relaxed">
                   {p.desc}
                 </p>
               </div>
 
-              <div className="border-t border-navy/10 pt-2 flex justify-between items-center text-[9px] text-gray font-mono">
+              <div className="border-t border-navy/15 pt-2 flex justify-between items-center text-[10px] text-slate-600 font-mono font-semibold">
                 <span>{p.label}</span>
                 <span>SEC // {p.num}</span>
               </div>

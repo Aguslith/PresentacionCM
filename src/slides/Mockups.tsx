@@ -96,11 +96,11 @@ export const Mockups: React.FC = () => {
         <div className="space-y-3 my-auto">
           {/* Header Description */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-2 max-w-6xl mx-auto">
-            <p className="text-xs md:text-sm text-gray text-left font-light max-w-2xl">
-              Ecosistema de piezas corporativas en <strong>formato vertical</strong>: renders 3D en video loop, indumentaria con hilados propios y set matero de fidelización B2B.
+            <p className="text-xs md:text-sm text-slate-800 text-left font-normal max-w-2xl">
+              Ecosistema de piezas corporativas en <strong className="text-navy">formato vertical</strong>: renders 3D en video loop, indumentaria con hilados propios y set matero de fidelización B2B.
             </p>
 
-            <div className="text-[9px] font-mono text-blue bg-blue/5 border border-blue/15 px-2.5 py-1 rounded-full flex items-center space-x-1.5 self-start sm:self-auto">
+            <div className="text-[9px] font-mono text-blue bg-blue/5 border border-blue/15 px-2.5 py-1 rounded-full flex items-center space-x-1.5 self-start sm:self-auto font-bold">
               <Sparkles className="w-3 h-3 text-sky" />
               <span>4 PIEZAS VERTICALES INTERACTIVAS</span>
             </div>
@@ -196,7 +196,7 @@ export const Mockups: React.FC = () => {
                     <h4 className="text-[11px] font-sans font-bold text-navy truncate leading-tight">
                       {m.title}
                     </h4>
-                    <p className="text-[9px] text-gray truncate font-light">
+                    <p className="text-[9px] text-slate-600 truncate font-normal">
                       {m.material}
                     </p>
                   </div>
@@ -205,7 +205,7 @@ export const Mockups: React.FC = () => {
             })}
           </div>
 
-          <div className="text-center text-[10px] text-gray font-mono">
+          <div className="text-center text-[10px] text-slate-600 font-mono font-medium">
             Haz clic en cualquier pieza vertical para reproducir en grande e inspeccionar su ficha de producción técnica
           </div>
         </div>
@@ -262,7 +262,7 @@ export const Mockups: React.FC = () => {
                       <span className="bg-blue/10 text-blue font-bold px-2 py-0.5 rounded uppercase">
                         {selectedMockup.tag}
                       </span>
-                      <span className="bg-navy/5 text-gray px-2 py-0.5 rounded uppercase">
+                      <span className="bg-navy/5 text-slate-600 px-2 py-0.5 rounded uppercase font-semibold">
                         {selectedMockup.badge}
                       </span>
                     </div>
@@ -271,42 +271,42 @@ export const Mockups: React.FC = () => {
                       {selectedMockup.title}
                     </h3>
 
-                    <p className="text-xs text-gray font-light leading-relaxed">
+                    <p className="text-xs text-slate-700 font-normal leading-relaxed">
                       {selectedMockup.description}
                     </p>
 
                     {/* Specs Box */}
                     <div className="bg-slate-50 border border-navy/10 rounded-xl p-3.5 space-y-2.5 text-xs">
                       <div>
-                        <span className="text-[9px] font-mono text-gray font-bold block uppercase">
+                        <span className="text-[9px] font-mono text-slate-500 font-bold block uppercase">
                           SUSTRATO / MATERIALIDAD
                         </span>
-                        <span className="text-navy font-medium text-[11px]">
+                        <span className="text-navy font-semibold text-[11px]">
                           {selectedMockup.material}
                         </span>
                       </div>
 
                       <div className="border-t border-navy/10 pt-2">
-                        <span className="text-[9px] font-mono text-gray font-bold block uppercase">
+                        <span className="text-[9px] font-mono text-slate-500 font-bold block uppercase">
                           TÉCNICA DE MARCAJE Y APLICACIÓN
                         </span>
-                        <span className="text-blue font-semibold text-[11px]">
+                        <span className="text-blue font-bold text-[11px]">
                           {selectedMockup.tecnica}
                         </span>
                       </div>
 
                       <div className="border-t border-navy/10 pt-2">
-                        <span className="text-[9px] font-mono text-gray font-bold block uppercase">
+                        <span className="text-[9px] font-mono text-slate-500 font-bold block uppercase">
                           FINALIDAD Y DESTINO B2B
                         </span>
-                        <span className="text-navy/80 text-[11px] font-light">
+                        <span className="text-slate-800 text-[11px] font-normal">
                           {selectedMockup.target}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="border-t border-navy/10 pt-3 flex justify-between items-center text-[10px] text-gray font-mono">
+                  <div className="border-t border-navy/10 pt-3 flex justify-between items-center text-[10px] text-slate-500 font-mono font-semibold">
                     <span>ALPACLADD MERCHANDISING 2026</span>
                     <span>MANUAL DE IDENTIDAD VISUAL</span>
                   </div>

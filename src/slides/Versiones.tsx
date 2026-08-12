@@ -204,7 +204,7 @@ export const Versiones: React.FC = () => {
                   transition={{ duration: 0.25 }}
                   className="bg-white border border-navy/10 p-3 rounded-xl shadow-sm text-left flex justify-between items-center text-xs"
                 >
-                  <p className="text-[11px] text-gray leading-relaxed font-light max-w-xl">
+                  <p className="text-[11px] text-slate-700 leading-relaxed font-normal max-w-xl">
                     {currentVersion.descripcion}
                   </p>
                   <span className="hidden sm:inline-block text-[9px] font-mono text-blue font-bold px-2 py-1 bg-blue/5 rounded border border-blue/15 shrink-0 ml-3">
@@ -217,11 +217,11 @@ export const Versiones: React.FC = () => {
             {/* Right: The 6 Interactive Selector Cards */}
             <div className="md:col-span-5 flex flex-col justify-between space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] font-mono text-gray uppercase tracking-widest font-bold flex items-center">
+                <span className="text-[10px] font-mono text-slate-700 uppercase tracking-widest font-bold flex items-center">
                   <Layers className="w-3.5 h-3.5 mr-1.5 text-blue" />
                   SELECCIONAR VARIANTE (6 CASOS)
                 </span>
-                <span className="text-[9px] font-mono text-blue font-semibold">Clic para animar</span>
+                <span className="text-[9px] font-mono text-blue font-bold">Clic para animar</span>
               </div>
 
               {/* 3x2 Grid of Variation Cards */}
@@ -237,7 +237,7 @@ export const Versiones: React.FC = () => {
                       className={`p-1.5 sm:p-2.5 rounded-xl border text-left flex flex-col justify-between h-16 sm:h-20 md:h-24 transition-all duration-300 relative overflow-hidden ${
                         isSelected
                           ? "bg-white border-blue shadow-md ring-2 ring-blue/30"
-                          : "bg-navy/5 border-navy/10 hover:border-navy/30 hover:bg-white"
+                          : "bg-white border-navy/15 hover:border-blue/50"
                       }`}
                     >
                       {/* Selected checkmark pill */}
@@ -277,7 +277,7 @@ export const Versiones: React.FC = () => {
                         >
                           {v.tag}
                         </span>
-                        <span className="text-[8px] font-mono text-gray/80 uppercase">{v.category}</span>
+                        <span className="text-[8px] font-mono text-slate-500 uppercase font-semibold">{v.category}</span>
                       </div>
                     </motion.button>
                   );
@@ -285,13 +285,13 @@ export const Versiones: React.FC = () => {
               </div>
 
               {/* Technical Norm Footer Spec */}
-              <div className="bg-navy/[0.03] border border-navy/10 p-2.5 rounded-xl text-left text-[9px] font-mono text-gray space-y-1">
+              <div className="bg-white border border-navy/15 p-2.5 rounded-xl text-left text-[9px] font-mono text-slate-700 space-y-1 shadow-sm">
                 <div className="flex items-center space-x-1.5 text-navy font-bold">
-                  <ShieldCheck className="w-3 h-3 text-blue" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-blue" />
                   <span>NORMA ISO 12647 — REPRODUCCIÓN MULTISOPORTE</span>
                 </div>
-                <p className="font-light text-gray/80 leading-tight">
-                  Sustrato: <strong>{currentVersion.sustrato}</strong>. Técnica recomendada: <strong>{currentVersion.tecnica}</strong>.
+                <p className="font-normal text-slate-600 leading-tight">
+                  Sustrato: <strong className="text-navy">{currentVersion.sustrato}</strong>. Técnica recomendada: <strong className="text-blue">{currentVersion.tecnica}</strong>.
                 </p>
               </div>
             </div>

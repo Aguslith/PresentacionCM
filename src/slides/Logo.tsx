@@ -15,22 +15,22 @@ export const Logo: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
           {/* Controls & Notes */}
           <div className="md:col-span-5 text-left space-y-5">
-            <p className="text-sm text-gray font-light leading-relaxed">
-              La marca <strong className="text-off font-semibold">ALPACLADD</strong> utiliza un imagotipo de alta recordación y arquitectura 3D. El isotipo integra tres elementos clave en su morfología: la silueta del cono de hilado, el devanado en bandas paralelas de hilos continuos en Sky Blue, y la inicial estructural "A" en azul institucional profundo.
+            <p className="text-sm text-slate-200 font-normal leading-relaxed">
+              La marca <strong className="text-white font-bold">ALPACLADD</strong> utiliza un imagotipo de alta recordación y arquitectura 3D. El isotipo integra tres elementos clave en su morfología: la silueta del cono de hilado, el devanado en bandas paralelas de hilos continuos en Sky Blue, y la inicial estructural "A" en azul institucional profundo.
             </p>
 
             {/* Select Switcher */}
             <div className="flex flex-col space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] font-mono text-gray uppercase tracking-widest">
+                <span className="text-[10px] font-mono text-slate-300 uppercase tracking-widest font-semibold">
                   VERSIÓN DE LOGOTIPO
                 </span>
                 <button
                   onClick={() => setShowGrid(!showGrid)}
                   className={`inline-flex items-center space-x-1 text-[9px] font-mono px-2 py-0.5 rounded border transition-all ${
                     showGrid
-                      ? "border-sky/40 bg-sky/10 text-sky"
-                      : "border-sky/15 bg-transparent text-gray hover:text-off"
+                      ? "border-sky/50 bg-sky/15 text-sky font-bold"
+                      : "border-sky/20 bg-transparent text-slate-300 hover:text-white"
                   }`}
                 >
                   <Grid className="w-2.5 h-2.5" />
@@ -48,8 +48,8 @@ export const Logo: React.FC = () => {
                     onClick={() => setVariant(v.id as any)}
                     className={`py-2 px-1 text-[10px] font-mono uppercase tracking-wider rounded border transition-all duration-300 ${
                       variant === v.id
-                        ? "bg-sky/20 border-sky text-sky shadow-lg shadow-sky/10 font-bold"
-                        : "bg-navy/40 border-sky/15 text-gray hover:border-sky/40 hover:text-off"
+                        ? "bg-sky/25 border-sky text-sky shadow-lg shadow-sky/15 font-bold"
+                        : "bg-navy/50 border-sky/20 text-slate-300 hover:border-sky/40 hover:text-white"
                     }`}
                   >
                     {v.label}
@@ -59,15 +59,15 @@ export const Logo: React.FC = () => {
             </div>
 
             {/* Construction rules */}
-            <div className="border border-sky/15 bg-sky/5 p-4 rounded-lg space-y-1.5">
+            <div className="border border-sky/20 bg-sky/5 p-4 rounded-lg space-y-1.5 shadow-sm">
               <div className="flex items-center space-x-2">
                 <Layers className="w-3.5 h-3.5 text-sky" />
                 <h4 className="text-xs font-mono font-bold text-sky uppercase">
                   DETALLES DE LOCKUP & TIPOGRAFÍA
                 </h4>
               </div>
-              <p className="text-[11px] text-gray/80 leading-relaxed font-light">
-                La tipografía base es <strong className="text-off font-semibold">Raleway Bold</strong> con kerning expandido (+0.18em) para conferir escala corporativa, acompañada del descriptor <em>"Fábrica de Hilados"</em> en peso Medium y tracking técnico (+0.35em).
+              <p className="text-[11px] text-slate-300 leading-relaxed font-normal">
+                La tipografía base es <strong className="text-white font-bold">Raleway Bold</strong> con kerning expandido (+0.18em) para conferir escala corporativa, acompañada del descriptor <em className="text-sky/90">"Fábrica de Hilados"</em> en peso Medium y tracking técnico (+0.35em).
               </p>
             </div>
           </div>

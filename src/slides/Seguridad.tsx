@@ -14,21 +14,21 @@ export const Seguridad: React.FC = () => {
               <ShieldCheck className="w-5 h-5 text-blue" />
               <h3 className="text-xl font-bold text-navy">Protección del Imagotipo</h3>
             </div>
-            <p className="text-sm text-gray font-light leading-relaxed">
+            <p className="text-sm text-slate-800 font-normal leading-relaxed">
               Para garantizar la legibilidad y el impacto visual del imagotipo en soportes físicos e interfaces digitales, se define un área de protección mínima donde ningún otro elemento gráfico (textos secundarios, bordes, fotografías u otros logos) puede ingresar.
             </p>
-            <div className="border border-navy/15 bg-navy/[0.02] p-4 rounded-lg space-y-2">
+            <div className="border border-navy/15 bg-white p-4 rounded-xl space-y-2 shadow-sm">
               <h4 className="text-xs font-mono font-bold text-navy uppercase">CÁLCULO DEL MÁRGEN</h4>
-              <p className="text-[11px] text-gray/80 leading-relaxed font-light">
-                La unidad de medida <strong>X</strong> equivale al ancho del facetado central de la "A". La zona de exclusión a cada uno de los cuatro lados del imagotipo debe ser de al menos <strong>1X</strong>.
+              <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
+                La unidad de medida <strong className="text-navy font-bold">X</strong> equivale al ancho del facetado central de la "A". La zona de exclusión a cada uno de los cuatro lados del imagotipo debe ser de al menos <strong className="text-blue font-bold">1X</strong>.
               </p>
             </div>
           </div>
 
           {/* Technical Diagram Card */}
           <div className="md:col-span-7 flex flex-col items-center">
-            <div className="w-full bg-white border border-navy/10 rounded-xl p-4 sm:p-8 shadow-xl relative overflow-hidden flex flex-col items-center justify-center min-h-[220px] sm:min-h-[280px]">
-              <div className="absolute top-3 left-3 text-[8px] font-mono text-gray">
+            <div className="w-full bg-white border border-navy/15 rounded-xl p-4 sm:p-8 shadow-xl relative overflow-hidden flex flex-col items-center justify-center min-h-[220px] sm:min-h-[280px]">
+              <div className="absolute top-3 left-3 text-[9px] font-mono text-slate-500 font-semibold">
                 BLUEPRINT: CLEARSPACE MARGINS (1X)
               </div>
 
@@ -62,7 +62,7 @@ export const Seguridad: React.FC = () => {
                 <polygon points="370,150 365,147 365,153" className="fill-blue" />
               </svg>
 
-              <div className="text-[9px] font-mono text-gray mt-4">
+              <div className="text-[10px] font-mono text-slate-600 mt-4 font-semibold">
                 MEDIDA BÁSICA: X = ANCHO DEL FACETADO DINÁMICO DEL ISOTIPO
               </div>
             </div>

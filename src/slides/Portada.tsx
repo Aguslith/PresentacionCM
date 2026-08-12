@@ -18,18 +18,18 @@ export const Portada: React.FC = () => {
             PRECISIÓN <br />
             <span className="text-sky">TEXTIL</span>
           </h1>
-          <p className="text-xs sm:text-sm md:text-base text-gray max-w-md font-light leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-slate-200 max-w-md font-normal leading-relaxed">
             Estructura de marca, manual de identidad visual y planeamiento de marketing estratégico B2B para la hilandería líder en calidad y tecnología de hilado.
           </p>
           <div className="pt-2 sm:pt-4 flex items-center space-x-4 sm:space-x-6">
             <div className="flex flex-col">
-              <span className="text-[9px] sm:text-[10px] text-gray uppercase tracking-widest font-mono">Diseño de Experiencia</span>
-              <span className="text-[11px] sm:text-xs text-sky font-semibold">Creative Dev Team</span>
+              <span className="text-[9px] sm:text-[10px] text-slate-300 uppercase tracking-widest font-mono font-medium">Diseño de Experiencia</span>
+              <span className="text-[11px] sm:text-xs text-sky font-bold">Creative Dev Team</span>
             </div>
-            <div className="w-[1px] h-6 sm:h-8 bg-sky/20" />
+            <div className="w-[1px] h-6 sm:h-8 bg-sky/30" />
             <div className="flex flex-col">
-              <span className="text-[9px] sm:text-[10px] text-gray uppercase tracking-widest font-mono">Navegación</span>
-              <span className="text-[11px] sm:text-xs text-sky font-semibold">Teclas / Swipe / Rueda</span>
+              <span className="text-[9px] sm:text-[10px] text-slate-300 uppercase tracking-widest font-mono font-medium">Navegación</span>
+              <span className="text-[11px] sm:text-xs text-sky font-bold">Teclas / Swipe / Rueda</span>
             </div>
           </div>
         </div>

@@ -16,21 +16,21 @@ export const Concepto: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           {/* Text Description */}
           <div className="md:col-span-6 text-left space-y-6">
-            <h3 className="text-xl md:text-2xl font-semibold text-sky">
+            <h3 className="text-xl md:text-2xl font-bold text-sky">
               "Precisión que transforma fibras en hilos"
             </h3>
-            <p className="text-sm md:text-base text-gray font-light leading-relaxed">
+            <p className="text-sm md:text-base text-slate-200 font-normal leading-relaxed">
               El núcleo conceptual de ALPACLADD radica en la transición ordenada: de la materia cruda y dispersa (fibras sueltas) al producto estructurado y fuerte (hilos continuos). La precisión es nuestro vector clave; cada torsión, estirado y purgado de hilo responde a un cálculo milimétrico.
             </p>
-            <p className="text-sm md:text-base text-gray font-light leading-relaxed">
+            <p className="text-sm md:text-base text-slate-200 font-normal leading-relaxed">
               Esta transformación física se refleja en nuestra identidad: líneas paralelas que se consolidan, retículas limpias y una geometría que une simplicidad visual con rigor técnico.
             </p>
 
             {/* Interactive Control for demo */}
-            <div className="border border-sky/15 bg-sky/5 p-4 rounded-lg space-y-3">
-              <div className="flex justify-between text-[11px] font-mono text-gray">
-                <span>SIMULADOR DE TORSIÓN</span>
-                <span className="text-sky">{torsion} TPM (Vueltas/m)</span>
+            <div className="border border-sky/20 bg-sky/5 p-4 rounded-lg space-y-3">
+              <div className="flex justify-between text-[11px] font-mono text-slate-300">
+                <span className="font-semibold text-slate-200">SIMULADOR DE TORSIÓN</span>
+                <span className="text-sky font-bold">{torsion} TPM (Vueltas/m)</span>
               </div>
               <input
                 type="range"
@@ -38,9 +38,9 @@ export const Concepto: React.FC = () => {
                 max="1200"
                 value={torsion}
                 onChange={(e) => setTorsion(Number(e.target.value))}
-                className="w-full h-1 bg-navy border border-sky/20 rounded-lg appearance-none cursor-pointer accent-sky"
+                className="w-full h-1 bg-navy border border-sky/30 rounded-lg appearance-none cursor-pointer accent-sky"
               />
-              <div className="text-[10px] text-gray/70">
+              <div className="text-[11px] text-slate-300 font-light">
                 Ajuste la torsión para observar la densidad y el ángulo de espiral resultante del hilo de algodón peinado.
               </div>
             </div>
@@ -48,8 +48,8 @@ export const Concepto: React.FC = () => {
 
           {/* Interactive SVG Diagram */}
           <div className="md:col-span-6 flex flex-col items-center">
-            <div className="w-full bg-navy/50 border border-sky/10 rounded-xl p-6 relative overflow-hidden">
-              <div className="text-[9px] font-mono text-gray/80 absolute top-3 left-3">
+            <div className="w-full bg-navy/60 border border-sky/20 rounded-xl p-6 relative overflow-hidden shadow-lg">
+              <div className="text-[10px] font-mono text-slate-300 absolute top-3 left-3 tracking-wider">
                 ANÁLISIS ESTRUCTURAL DE FIBRA
               </div>
 
@@ -58,32 +58,32 @@ export const Concepto: React.FC = () => {
                 {/* Fibers entering from left (dispersed) */}
                 <path
                   d="M10,40 Q60,38 120,60"
-                  className="stroke-sky/30"
+                  className="stroke-sky/40"
                   strokeWidth="1.5"
                   fill="none"
                 />
                 <path
                   d="M10,65 Q60,60 120,70"
-                  className="stroke-sky/20"
+                  className="stroke-sky/30"
                   strokeWidth="1.2"
                   fill="none"
                 />
                 <path
                   d="M10,85 Q60,82 120,80"
-                  className="stroke-sky/40"
+                  className="stroke-sky/50"
                   strokeWidth="1"
                   fill="none"
                 />
                 <path
                   d="M10,110 Q60,95 120,90"
-                  className="stroke-sky/20"
+                  className="stroke-sky/30"
                   strokeWidth="1.6"
                   fill="none"
                 />
 
                 {/* Drafting rolls representation */}
-                <rect x="110" y="45" width="20" height="60" rx="3" fill="none" className="stroke-sky/20" strokeWidth="1" strokeDasharray="2 2" />
-                <text x="120" y="40" className="fill-sky/40 text-[7px] font-mono" textAnchor="middle">ESTIRADO</text>
+                <rect x="110" y="45" width="20" height="60" rx="3" fill="none" className="stroke-sky/30" strokeWidth="1" strokeDasharray="2 2" />
+                <text x="120" y="40" className="fill-sky/70 text-[8px] font-mono font-bold" textAnchor="middle">ESTIRADO</text>
 
                 {/* Twisted fiber consolidation (middle to right) */}
                 {/* Helix path based on state 'torsion' */}
@@ -98,19 +98,19 @@ export const Concepto: React.FC = () => {
                 {/* Highlight threads wrapped around */}
                 <path
                   d={`M130,75 T170,75 T210,75 T250,75 T290,75 T330,75 T370,75`}
-                  className="stroke-sky/80"
-                  strokeWidth="1"
+                  className="stroke-sky/90"
+                  strokeWidth="1.2"
                   fill="none"
                 />
 
                 {/* Spindle head on the right */}
                 <circle cx="380" cy="75" r="4" className="fill-off" />
-                <path d="M380,50 L380,100" className="stroke-sky/40" strokeWidth="1.5" />
-                <text x="380" y="45" className="fill-sky/60 text-[7px] font-mono" textAnchor="middle">HILADO</text>
+                <path d="M380,50 L380,100" className="stroke-sky/50" strokeWidth="1.5" />
+                <text x="380" y="45" className="fill-sky text-[8px] font-mono font-bold" textAnchor="middle">HILADO</text>
               </svg>
 
-              <div className="flex justify-between items-center text-[10px] font-mono text-gray mt-2 pt-2 border-t border-sky/10">
-                <span>Estado: Torsionado</span>
+              <div className="flex justify-between items-center text-[11px] font-mono text-slate-300 mt-2 pt-2 border-t border-sky/15">
+                <span>Estado: <strong className="text-slate-100">Torsionado</strong></span>
                 <span className="text-sky font-semibold">Tensión: OK</span>
               </div>
             </div>

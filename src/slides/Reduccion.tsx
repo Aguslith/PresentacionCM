@@ -14,20 +14,20 @@ export const Reduccion: React.FC = () => {
               <Minimize2 className="w-5 h-5 text-sky" />
               <h3 className="text-xl font-bold text-sky">Garantía de Legibilidad</h3>
             </div>
-            <p className="text-sm text-gray font-light leading-relaxed">
+            <p className="text-sm text-slate-200 font-normal leading-relaxed">
               Para preservar la definición de las facetas y los filamentos de la "A" y evitar el empastado tipográfico, se establecen los umbrales mínimos físicos y digitales para la marca.
             </p>
-            <div className="border border-sky/15 bg-sky/5 p-4 rounded-lg space-y-3">
+            <div className="border border-sky/20 bg-sky/5 p-4 rounded-lg space-y-3 shadow-sm">
               <div>
                 <h4 className="text-xs font-mono font-bold text-sky uppercase">01 // IMAGOTIPO COMPLETO</h4>
-                <p className="text-[11px] text-gray mt-1 leading-relaxed">
-                  El imagotipo principal completo (isotype + nombre) tiene una reducción mínima de <strong>25 mm de ancho</strong> en piezas impresas y <strong>120px</strong> en digital.
+                <p className="text-[11px] text-slate-300 mt-1 leading-relaxed">
+                  El imagotipo principal completo (isotype + nombre) tiene una reducción mínima de <strong className="text-white">25 mm de ancho</strong> en piezas impresas y <strong className="text-white">120px</strong> en digital.
                 </p>
               </div>
-              <div className="border-t border-sky/10 pt-2">
+              <div className="border-t border-sky/15 pt-2">
                 <h4 className="text-xs font-mono font-bold text-sky uppercase">02 // ISOTIPO INDEPENDIENTE</h4>
-                <p className="text-[11px] text-gray mt-1 leading-relaxed">
-                  Para piezas micro (como etiquetas cosidas en prenda o cabezal de bobina), el isotipo solo puede reducirse hasta <strong>8 mm de ancho</strong> en impresión y <strong>32px</strong> en digital.
+                <p className="text-[11px] text-slate-300 mt-1 leading-relaxed">
+                  Para piezas micro (como etiquetas cosidas en prenda o cabezal de bobina), el isotipo solo puede reducirse hasta <strong className="text-white">8 mm de ancho</strong> en impresión y <strong className="text-white">32px</strong> en digital.
                 </p>
               </div>
             </div>
@@ -35,19 +35,19 @@ export const Reduccion: React.FC = () => {
 
           {/* Graphical comparison */}
           <div className="md:col-span-7 space-y-3 sm:space-y-4">
-            <div className="w-full bg-navy/40 border border-sky/15 rounded-xl p-3.5 sm:p-6 relative overflow-hidden space-y-4 sm:space-y-6">
-              <div className="text-[8px] font-mono text-gray text-left">
+            <div className="w-full bg-navy/60 border border-sky/20 rounded-xl p-3.5 sm:p-6 relative overflow-hidden space-y-4 sm:space-y-6 shadow-lg">
+              <div className="text-[9px] font-mono text-slate-300 text-left tracking-wider">
                 ESCALADO REALISTA (SIMULACIÓN 1:1)
               </div>
 
               {/* Box 1: Principal Lockup (25 mm) */}
-              <div className="flex flex-col sm:flex-row items-center justify-between border-b border-sky/10 pb-3 sm:pb-6 text-left gap-2 sm:gap-4">
+              <div className="flex flex-col sm:flex-row items-center justify-between border-b border-sky/15 pb-3 sm:pb-6 text-left gap-2 sm:gap-4">
                 <div>
-                  <span className="text-[10px] font-mono text-sky font-bold block">IMAGOTIPO COMPLETO</span>
-                  <span className="text-[11px] sm:text-xs text-gray">Ancho mínimo: 25 mm / 120px</span>
+                  <span className="text-[11px] font-mono text-sky font-bold block">IMAGOTIPO COMPLETO</span>
+                  <span className="text-[11px] sm:text-xs text-slate-300">Ancho mínimo: 25 mm / 120px</span>
                 </div>
 
-                <div className="bg-white p-2.5 sm:p-4 rounded border border-sky/10 flex items-center justify-center min-w-[140px] sm:min-w-[180px] shadow-md">
+                <div className="bg-white p-2.5 sm:p-4 rounded-lg border border-sky/10 flex items-center justify-center min-w-[140px] sm:min-w-[180px] shadow-md">
                   {/* 25mm Logo width in screen pixels */}
                   <BrandLogo
                     variant="horizontal"
@@ -60,11 +60,11 @@ export const Reduccion: React.FC = () => {
               {/* Box 2: Isotipo Solo (8 mm) */}
               <div className="flex flex-col sm:flex-row items-center justify-between text-left gap-2 sm:gap-4">
                 <div>
-                  <span className="text-[10px] font-mono text-sky font-bold block">ISOTIPO AISLADO</span>
-                  <span className="text-[11px] sm:text-xs text-gray">Ancho mínimo: 8 mm / 32px</span>
+                  <span className="text-[11px] font-mono text-sky font-bold block">ISOTIPO AISLADO</span>
+                  <span className="text-[11px] sm:text-xs text-slate-300">Ancho mínimo: 8 mm / 32px</span>
                 </div>
 
-                <div className="bg-white p-2.5 sm:p-4 rounded border border-sky/10 flex items-center justify-center min-w-[140px] sm:min-w-[180px] shadow-md">
+                <div className="bg-white p-2.5 sm:p-4 rounded-lg border border-sky/10 flex items-center justify-center min-w-[140px] sm:min-w-[180px] shadow-md">
                   {/* 8mm Isotype width in screen pixels */}
                   <BrandLogo
                     variant="isotype"

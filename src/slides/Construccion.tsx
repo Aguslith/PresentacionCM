@@ -50,10 +50,10 @@ export const Construccion: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="space-y-4"
               >
-                <p className="text-sm text-navy/80 font-light leading-relaxed">
+                <p className="text-sm text-slate-800 font-normal leading-relaxed">
                   {stepsInfo[step]?.desc}
                 </p>
-                <div className="text-[10px] text-gray font-mono bg-navy/5 p-2 rounded inline-block">
+                <div className="text-[11px] text-slate-600 font-mono bg-navy/5 p-2 rounded-lg inline-block border border-navy/10">
                   SISTEMA: {stepsInfo[step]?.meta}
                 </div>
               </motion.div>
@@ -68,7 +68,7 @@ export const Construccion: React.FC = () => {
                   className={`py-2 px-3 text-[10px] font-mono tracking-widest rounded border transition-all duration-300 ${
                     step === i
                       ? "bg-blue border-blue text-white shadow-md font-bold"
-                      : "bg-navy/5 border-navy/10 text-gray hover:border-blue/40 hover:text-navy"
+                      : "bg-white border-navy/15 text-slate-600 hover:border-blue/60 hover:text-navy font-medium shadow-sm"
                   }`}
                 >
                   PASO 0{i + 1}
@@ -79,8 +79,8 @@ export const Construccion: React.FC = () => {
 
           {/* Graphic Area */}
           <div className="md:col-span-7 flex flex-col items-center">
-            <div className="w-full bg-white border border-navy/10 rounded-xl p-4 sm:p-6 shadow-xl h-48 sm:h-60 md:h-72 flex justify-center items-center relative overflow-hidden">
-              <div className="absolute top-3 left-3 text-[8px] font-mono text-gray">
+            <div className="w-full bg-white border border-navy/15 rounded-xl p-4 sm:p-6 shadow-xl h-48 sm:h-60 md:h-72 flex justify-center items-center relative overflow-hidden">
+              <div className="absolute top-3 left-3 text-[9px] font-mono text-slate-500 font-semibold">
                 ESTADO: {stepsInfo[step]?.title}
               </div>
               
