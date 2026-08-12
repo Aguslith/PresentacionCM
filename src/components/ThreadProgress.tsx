@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { SLIDES } from "../slides/types";
-import { Play, Pause, RotateCcw, Clock, X, ChevronRight, User } from "lucide-react";
+import { Play, Pause, RotateCcw, Clock, X, ChevronRight, User, Palette } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 interface ThreadProgressProps {
   progress: number; // Value between 0 and 1
@@ -15,6 +16,7 @@ export const ThreadProgress: React.FC<ThreadProgressProps> = ({
   progress,
   onSeek,
 }) => {
+  const { isDarkOverride, toggleTheme } = useTheme();
   const [showGuideModal, setShowGuideModal] = useState(false);
   const [timerSeconds, setTimerSeconds] = useState(600); // 10 minutes = 600s
   const [isTimerRunning, setIsTimerRunning] = useState(false);
@@ -70,16 +72,32 @@ export const ThreadProgress: React.FC<ThreadProgressProps> = ({
         />
       </div>
 
-      {/* Floating 10-Min Timer & Speaker Guide Button (Discreet, bottom-right floating) */}
-      <div className="fixed bottom-10 right-28 z-40 hidden sm:flex items-center">
+      {/* Floating Control Bar: Theme Toggle & 10-Min Timer (Responsive for Mobile & Desktop) */}
+      <div className="fixed bottom-3 right-16 sm:bottom-8 sm:right-28 z-40 flex items-center space-x-1.5 sm:space-x-2">
+        {/* 'O' Key Theme Switcher */}
+        <button
+          onClick={toggleTheme}
+          className={`flex items-center space-x-1 sm:space-x-1.5 py-1.5 sm:py-2 px-2.5 sm:px-3 rounded-full border text-[9px] sm:text-[10px] font-mono uppercase tracking-wider transition-all duration-300 shadow-lg backdrop-blur-md ${
+            isDarkOverride
+              ? "bg-sky/20 border-sky text-sky hover:bg-sky/30 shadow-sky/20"
+              : "bg-navy/85 hover:bg-navy border-sky/25 text-off/80 hover:text-white shadow-navy/50"
+          }`}
+          title="Alternar paleta / Modo oscuro (Presiona tecla 'O')"
+        >
+          <Palette className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-sky" />
+          <span className="font-bold hidden xs:inline">{isDarkOverride ? "Oscuro" : "Color"}</span>
+          <span className="text-[8px] sm:text-[9px] px-1 py-0.2 bg-white/10 rounded font-mono border border-white/15">O</span>
+        </button>
+
+        {/* 10-Min Timer & Speaker Guide Button */}
         <button
           onClick={() => setShowGuideModal(true)}
-          className="flex items-center space-x-2 py-2.5 px-3.5 rounded-full bg-navy/85 hover:bg-navy border border-sky/25 text-sky hover:text-white transition-all text-[10px] font-mono uppercase tracking-wider shadow-lg shadow-navy/50 backdrop-blur-md group"
+          className="flex items-center space-x-1.5 sm:space-x-2 py-1.5 sm:py-2 px-2.5 sm:px-3.5 rounded-full bg-navy/85 hover:bg-navy border border-sky/25 text-sky hover:text-white transition-all text-[9px] sm:text-[10px] font-mono uppercase tracking-wider shadow-lg shadow-navy/50 backdrop-blur-md group"
           title="Abrir cronómetro de 10:00 y guía de oratoria"
         >
-          <Clock className="w-3.5 h-3.5 text-sky group-hover:animate-pulse" />
+          <Clock className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-sky group-hover:animate-pulse" />
           <span className="font-bold">{formatTimer(timerSeconds)}</span>
-          <span className="opacity-60">| Guía 10 Min</span>
+          <span className="opacity-60 hidden sm:inline">| Guía 10 Min</span>
         </button>
       </div>
 

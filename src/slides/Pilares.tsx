@@ -38,12 +38,12 @@ export const Pilares: React.FC = () => {
   return (
     <SlideShell id="pilares" n={18} title="Nuestros Cuatro Pilares" kind="galeria" bgType="off">
       <div className="h-full flex flex-col justify-between py-2">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-auto text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 my-auto text-left">
           {pillarsList.map((p, idx) => (
             <motion.div
               key={idx}
               whileHover={{ y: -5, borderColor: "#1D5A8F" }}
-              className="border border-navy/15 bg-white p-5 rounded-lg flex flex-col justify-between h-64 shadow-md transition-shadow duration-300 hover:shadow-lg relative overflow-hidden"
+              className="border border-navy/15 bg-white p-3.5 sm:p-5 rounded-lg flex flex-col justify-between h-44 sm:h-56 md:h-64 shadow-md transition-shadow duration-300 hover:shadow-lg relative overflow-hidden"
             >
               {/* Technical background overlay */}
               <div className="absolute top-0 right-0 p-2 text-navy/[0.04] text-5xl font-mono font-bold leading-none select-none">

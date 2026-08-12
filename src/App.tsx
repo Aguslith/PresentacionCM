@@ -1,5 +1,6 @@
 import { HorizontalController } from "./components/HorizontalController";
 import type { Slide } from "./slides/types";
+import { ThemeProvider } from "./context/ThemeContext";
 import { Portada } from "./slides/Portada";
 import { Intro } from "./slides/Intro";
 import { Concepto } from "./slides/Concepto";
@@ -85,7 +86,11 @@ function App() {
     }
   };
 
-  return <HorizontalController renderSlide={renderSlide} />;
+  return (
+    <ThemeProvider>
+      <HorizontalController renderSlide={renderSlide} />
+    </ThemeProvider>
+  );
 }
 
 export default App;

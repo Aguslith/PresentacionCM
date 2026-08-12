@@ -27,25 +27,25 @@ export const Seguridad: React.FC = () => {
 
           {/* Technical Diagram Card */}
           <div className="md:col-span-7 flex flex-col items-center">
-            <div className="w-full bg-white border border-navy/10 rounded-xl p-8 shadow-xl relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
+            <div className="w-full bg-white border border-navy/10 rounded-xl p-4 sm:p-8 shadow-xl relative overflow-hidden flex flex-col items-center justify-center min-h-[220px] sm:min-h-[280px]">
               <div className="absolute top-3 left-3 text-[8px] font-mono text-gray">
                 BLUEPRINT: CLEARSPACE MARGINS (1X)
               </div>
 
               {/* Vector Logo + Clearspace dashed line overlays */}
-              <div className="relative border border-dashed border-blue/40 p-10 bg-navy/[0.02] rounded-lg">
+              <div className="relative border border-dashed border-blue/40 p-4 sm:p-8 md:p-10 bg-navy/[0.02] rounded-lg">
                 {/* Labels indicating clear space around */}
-                <div className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[9px] font-mono text-blue font-bold">1X</div>
-                <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 text-[9px] font-mono text-blue font-bold">1X</div>
-                <div className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[9px] font-mono text-blue font-bold">1X</div>
-                <div className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[9px] font-mono text-blue font-bold">1X</div>
+                <div className="absolute top-1 sm:top-2.5 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] font-mono text-blue font-bold">1X</div>
+                <div className="absolute bottom-1 sm:bottom-2.5 left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] font-mono text-blue font-bold">1X</div>
+                <div className="absolute left-1 sm:left-2.5 top-1/2 -translate-y-1/2 text-[8px] sm:text-[9px] font-mono text-blue font-bold">1X</div>
+                <div className="absolute right-1 sm:right-2.5 top-1/2 -translate-y-1/2 text-[8px] sm:text-[9px] font-mono text-blue font-bold">1X</div>
                 
                 {/* Inside actual logo bounding box */}
-                <div className="border border-sky/30 bg-white px-6 py-4 rounded shadow-sm flex items-center justify-center">
+                <div className="border border-sky/30 bg-white px-3 sm:px-6 py-2 sm:py-4 rounded shadow-sm flex items-center justify-center">
                   <BrandLogo
                     variant="horizontal"
                     theme="light"
-                    size="md"
+                    size="sm"
                   />
                 </div>
               </div>

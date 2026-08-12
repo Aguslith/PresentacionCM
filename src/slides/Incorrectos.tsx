@@ -14,7 +14,7 @@ export const Incorrectos: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
             {/* Incorrect 1: Deformacion */}
-            <div className="bg-navy/40 border border-red-500/20 p-4 rounded-xl flex flex-col justify-between h-52 relative overflow-hidden group hover:border-red-500/40 transition-colors">
+            <div className="bg-navy/40 border border-red-500/20 p-2.5 sm:p-4 rounded-xl flex flex-col justify-between h-40 sm:h-48 md:h-52 relative overflow-hidden group hover:border-red-500/40 transition-colors">
               <div className="absolute top-2 right-2 text-red-400">
                 <XCircle className="w-4 h-4" />
               </div>
@@ -38,7 +38,7 @@ export const Incorrectos: React.FC = () => {
             </div>
 
             {/* Incorrect 2: Rotacion */}
-            <div className="bg-navy/40 border border-red-500/20 p-4 rounded-xl flex flex-col justify-between h-52 relative overflow-hidden group hover:border-red-500/40 transition-colors">
+            <div className="bg-navy/40 border border-red-500/20 p-2.5 sm:p-4 rounded-xl flex flex-col justify-between h-40 sm:h-48 md:h-52 relative overflow-hidden group hover:border-red-500/40 transition-colors">
               <div className="absolute top-2 right-2 text-red-400">
                 <XCircle className="w-4 h-4" />
               </div>
@@ -62,7 +62,7 @@ export const Incorrectos: React.FC = () => {
             </div>
 
             {/* Incorrect 3: Colores incorrectos */}
-            <div className="bg-navy/40 border border-red-500/20 p-4 rounded-xl flex flex-col justify-between h-52 relative overflow-hidden group hover:border-red-500/40 transition-colors">
+            <div className="bg-navy/40 border border-red-500/20 p-2.5 sm:p-4 rounded-xl flex flex-col justify-between h-40 sm:h-48 md:h-52 relative overflow-hidden group hover:border-red-500/40 transition-colors">
               <div className="absolute top-2 right-2 text-red-400">
                 <XCircle className="w-4 h-4" />
               </div>
@@ -86,7 +86,7 @@ export const Incorrectos: React.FC = () => {
             </div>
 
             {/* Incorrect 4: Alteracion */}
-            <div className="bg-navy/40 border border-red-500/20 p-4 rounded-xl flex flex-col justify-between h-52 relative overflow-hidden group hover:border-red-500/40 transition-colors">
+            <div className="bg-navy/40 border border-red-500/20 p-2.5 sm:p-4 rounded-xl flex flex-col justify-between h-40 sm:h-48 md:h-52 relative overflow-hidden group hover:border-red-500/40 transition-colors">
               <div className="absolute top-2 right-2 text-red-400">
                 <XCircle className="w-4 h-4" />
               </div>

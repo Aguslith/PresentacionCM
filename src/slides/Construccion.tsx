@@ -79,7 +79,7 @@ export const Construccion: React.FC = () => {
 
           {/* Graphic Area */}
           <div className="md:col-span-7 flex flex-col items-center">
-            <div className="w-full bg-white border border-navy/10 rounded-xl p-6 shadow-xl h-64 md:h-72 flex justify-center items-center relative overflow-hidden">
+            <div className="w-full bg-white border border-navy/10 rounded-xl p-4 sm:p-6 shadow-xl h-48 sm:h-60 md:h-72 flex justify-center items-center relative overflow-hidden">
               <div className="absolute top-3 left-3 text-[8px] font-mono text-gray">
                 ESTADO: {stepsInfo[step]?.title}
               </div>

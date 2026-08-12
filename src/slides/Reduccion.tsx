@@ -34,20 +34,20 @@ export const Reduccion: React.FC = () => {
           </div>
 
           {/* Graphical comparison */}
-          <div className="md:col-span-7 space-y-4">
-            <div className="w-full bg-navy/40 border border-sky/15 rounded-xl p-6 relative overflow-hidden space-y-6">
+          <div className="md:col-span-7 space-y-3 sm:space-y-4">
+            <div className="w-full bg-navy/40 border border-sky/15 rounded-xl p-3.5 sm:p-6 relative overflow-hidden space-y-4 sm:space-y-6">
               <div className="text-[8px] font-mono text-gray text-left">
                 ESCALADO REALISTA (SIMULACIÓN 1:1)
               </div>
 
               {/* Box 1: Principal Lockup (25 mm) */}
-              <div className="flex flex-col md:flex-row items-center justify-between border-b border-sky/10 pb-6 text-left">
-                <div className="mb-4 md:mb-0">
+              <div className="flex flex-col sm:flex-row items-center justify-between border-b border-sky/10 pb-3 sm:pb-6 text-left gap-2 sm:gap-4">
+                <div>
                   <span className="text-[10px] font-mono text-sky font-bold block">IMAGOTIPO COMPLETO</span>
-                  <span className="text-xs text-gray">Ancho mínimo: 25 mm / 120px</span>
+                  <span className="text-[11px] sm:text-xs text-gray">Ancho mínimo: 25 mm / 120px</span>
                 </div>
 
-                <div className="bg-white p-4 rounded border border-sky/10 flex items-center justify-center min-w-[200px] shadow-md">
+                <div className="bg-white p-2.5 sm:p-4 rounded border border-sky/10 flex items-center justify-center min-w-[140px] sm:min-w-[180px] shadow-md">
                   {/* 25mm Logo width in screen pixels */}
                   <BrandLogo
                     variant="horizontal"
@@ -58,13 +58,13 @@ export const Reduccion: React.FC = () => {
               </div>
 
               {/* Box 2: Isotipo Solo (8 mm) */}
-              <div className="flex flex-col md:flex-row items-center justify-between text-left">
-                <div className="mb-4 md:mb-0">
+              <div className="flex flex-col sm:flex-row items-center justify-between text-left gap-2 sm:gap-4">
+                <div>
                   <span className="text-[10px] font-mono text-sky font-bold block">ISOTIPO AISLADO</span>
-                  <span className="text-xs text-gray">Ancho mínimo: 8 mm / 32px</span>
+                  <span className="text-[11px] sm:text-xs text-gray">Ancho mínimo: 8 mm / 32px</span>
                 </div>
 
-                <div className="bg-white p-4 rounded border border-sky/10 flex items-center justify-center min-w-[200px] shadow-md">
+                <div className="bg-white p-2.5 sm:p-4 rounded border border-sky/10 flex items-center justify-center min-w-[140px] sm:min-w-[180px] shadow-md">
                   {/* 8mm Isotype width in screen pixels */}
                   <BrandLogo
                     variant="isotype"

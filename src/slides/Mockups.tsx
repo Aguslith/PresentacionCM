@@ -107,7 +107,7 @@ export const Mockups: React.FC = () => {
           </div>
 
           {/* 4 Vertical Columns Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto text-left">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 max-w-6xl mx-auto text-left">
             {mockups.map((m) => {
               const currentMode = viewModes[m.id] || m.type;
               const currentSrc =
@@ -122,10 +122,10 @@ export const Mockups: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: m.id * 0.08 }}
                   onClick={() => setSelectedMockup(m)}
-                  className="bg-white border border-navy/15 p-2.5 rounded-2xl flex flex-col justify-between h-[360px] sm:h-[380px] shadow-sm hover:shadow-2xl hover:border-blue/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  className="bg-white border border-navy/15 p-1.5 sm:p-2.5 rounded-2xl flex flex-col justify-between h-[260px] sm:h-[340px] md:h-[380px] shadow-sm hover:shadow-2xl hover:border-blue/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
                 >
                   {/* Vertical Media Container */}
-                  <div className="flex-grow rounded-xl overflow-hidden bg-navy/95 relative flex items-center justify-center h-64 border border-navy/10">
+                  <div className="flex-grow rounded-xl overflow-hidden bg-navy/95 relative flex items-center justify-center h-36 sm:h-52 md:h-64 border border-navy/10">
                     {isVideo ? (
                       <video
                         src={currentSrc}

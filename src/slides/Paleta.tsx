@@ -68,48 +68,48 @@ export const Paleta: React.FC = () => {
       <div className="h-full flex flex-col justify-between py-2">
         <div className="space-y-6 my-auto">
           {/* Swatches Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
             {colors.map((color) => (
               <div
                 key={color.hex}
-                className="border border-navy/10 bg-white rounded-lg p-3 shadow-md flex flex-col justify-between text-left space-y-4 hover:shadow-xl transition-all duration-300 group"
+                className="border border-navy/10 bg-white rounded-lg p-2.5 sm:p-3 shadow-md flex flex-col justify-between text-left space-y-2 sm:space-y-4 hover:shadow-xl transition-all duration-300 group"
               >
                 {/* Visual Color block */}
                 <div
-                  className="w-full h-24 rounded border border-navy/5 relative flex items-end justify-between p-2 shadow-inner"
+                  className="w-full h-14 sm:h-20 md:h-24 rounded border border-navy/5 relative flex items-end justify-between p-1.5 sm:p-2 shadow-inner"
                   style={{ backgroundColor: color.hex }}
                 >
                   <button
                     onClick={() => handleCopy(color.hex)}
-                    className={`p-1.5 rounded bg-white/95 border border-navy/10 shadow hover:bg-white transition-opacity duration-300 opacity-0 group-hover:opacity-100 ${
+                    className={`p-1 sm:p-1.5 rounded bg-white/95 border border-navy/10 shadow hover:bg-white transition-opacity duration-300 opacity-0 group-hover:opacity-100 ${
                       copiedHex === color.hex ? "opacity-100" : ""
                     }`}
                     title="Copiar HEX"
                   >
                     {copiedHex === color.hex ? (
-                      <Check className="w-3.5 h-3.5 text-green-600" />
+                      <Check className="w-3 h-3 text-green-600" />
                     ) : (
-                      <Copy className="w-3.5 h-3.5 text-navy" />
+                      <Copy className="w-3 h-3 text-navy" />
                     )}
                   </button>
                 </div>
 
                 {/* Color details */}
-                <div className="space-y-1">
-                  <h4 className="font-bold text-xs tracking-wider text-navy font-mono">
+                <div className="space-y-0.5 sm:space-y-1">
+                  <h4 className="font-bold text-[10px] sm:text-xs tracking-wider text-navy font-mono truncate">
                     {color.name}
                   </h4>
-                  <span className="block text-[11px] font-bold text-blue font-mono">
+                  <span className="block text-[10px] sm:text-[11px] font-bold text-blue font-mono">
                     {color.hex}
                   </span>
-                  <div className="text-[9px] font-mono text-gray space-y-0.5">
+                  <div className="text-[8px] sm:text-[9px] font-mono text-gray space-y-0.5 hidden xs:block">
                     <div>{color.rgb}</div>
                     <div>{color.cmyk}</div>
                   </div>
                 </div>
 
                 {/* Role text */}
-                <div className="border-t border-navy/10 pt-2 text-[9px] font-mono text-gray/80 leading-none">
+                <div className="border-t border-navy/10 pt-1.5 sm:pt-2 text-[8px] sm:text-[9px] font-mono text-gray/80 leading-tight truncate">
                   {color.role}
                 </div>
               </div>

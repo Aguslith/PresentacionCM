@@ -225,7 +225,7 @@ export const Versiones: React.FC = () => {
               </div>
 
               {/* 3x2 Grid of Variation Cards */}
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                 {versions.map((v) => {
                   const isSelected = selectedId === v.id;
                   return (
@@ -234,7 +234,7 @@ export const Versiones: React.FC = () => {
                       onClick={() => setSelectedId(v.id)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`p-2.5 rounded-xl border text-left flex flex-col justify-between h-24 transition-all duration-300 relative overflow-hidden ${
+                      className={`p-1.5 sm:p-2.5 rounded-xl border text-left flex flex-col justify-between h-16 sm:h-20 md:h-24 transition-all duration-300 relative overflow-hidden ${
                         isSelected
                           ? "bg-white border-blue shadow-md ring-2 ring-blue/30"
                           : "bg-navy/5 border-navy/10 hover:border-navy/30 hover:bg-white"
@@ -242,14 +242,14 @@ export const Versiones: React.FC = () => {
                     >
                       {/* Selected checkmark pill */}
                       {isSelected && (
-                        <div className="absolute top-2 right-2 w-4 h-4 rounded-full bg-blue text-white flex items-center justify-center shadow">
-                          <Check className="w-2.5 h-2.5" />
+                        <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-blue text-white flex items-center justify-center shadow">
+                          <Check className="w-2 sm:w-2.5 h-2 sm:h-2.5" />
                         </div>
                       )}
 
                       {/* Mini Logo Preview Thumbnail */}
                       <div
-                        className={`w-full h-11 rounded-lg flex items-center justify-center p-1 border ${v.thumbBg}`}
+                        className={`w-full h-7 sm:h-9 md:h-11 rounded-lg flex items-center justify-center p-0.5 sm:p-1 border ${v.thumbBg}`}
                         style={{
                           backgroundImage:
                             v.id === "bordado"

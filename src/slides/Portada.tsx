@@ -14,32 +14,32 @@ export const Portada: React.FC = () => {
               FÁBRICA DE HILADOS DESDE 2026
             </div>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-wider text-off leading-none">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold uppercase tracking-wider text-off leading-none">
             PRECISIÓN <br />
             <span className="text-sky">TEXTIL</span>
           </h1>
-          <p className="text-sm md:text-base text-gray max-w-md font-light leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-gray max-w-md font-light leading-relaxed">
             Estructura de marca, manual de identidad visual y planeamiento de marketing estratégico B2B para la hilandería líder en calidad y tecnología de hilado.
           </p>
-          <div className="pt-4 flex items-center space-x-6">
+          <div className="pt-2 sm:pt-4 flex items-center space-x-4 sm:space-x-6">
             <div className="flex flex-col">
-              <span className="text-[10px] text-gray uppercase tracking-widest font-mono">Diseño de Experiencia</span>
-              <span className="text-xs text-sky font-semibold">Creative Dev Team</span>
+              <span className="text-[9px] sm:text-[10px] text-gray uppercase tracking-widest font-mono">Diseño de Experiencia</span>
+              <span className="text-[11px] sm:text-xs text-sky font-semibold">Creative Dev Team</span>
             </div>
-            <div className="w-[1px] h-8 bg-sky/20" />
+            <div className="w-[1px] h-6 sm:h-8 bg-sky/20" />
             <div className="flex flex-col">
-              <span className="text-[10px] text-gray uppercase tracking-widest font-mono">Formato</span>
-              <span className="text-xs text-sky font-semibold">Scroll Horizontal</span>
+              <span className="text-[9px] sm:text-[10px] text-gray uppercase tracking-widest font-mono">Navegación</span>
+              <span className="text-[11px] sm:text-xs text-sky font-semibold">Teclas / Swipe / Rueda</span>
             </div>
           </div>
         </div>
 
         {/* Large 3D Spinning Cone Graphic */}
-        <div className="relative flex justify-center items-center h-72 md:h-96">
+        <div className="relative flex justify-center items-center h-48 sm:h-72 md:h-96">
           {/* Animated Glow behind graphic */}
-          <div className="absolute w-64 h-64 bg-sky/5 rounded-full filter blur-3xl animate-pulse" />
+          <div className="absolute w-48 sm:w-64 h-48 sm:h-64 bg-sky/5 rounded-full filter blur-3xl animate-pulse" />
           
-          <div className={`${animStyles.animFloat} relative w-60 h-60`}>
+          <div className={`${animStyles.animFloat} relative w-44 h-44 sm:w-60 sm:h-60`}>
             {/* Spinning Spindle Lines */}
             <svg
               className={`${animStyles.animSpin3D} w-full h-full`}
