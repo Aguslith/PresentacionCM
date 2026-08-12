@@ -1,80 +1,128 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
 import { SlideShell } from "../components/SlideShell";
-import animStyles from "../animations.module.css";
+import { BrandLogo } from "../components/BrandLogo";
+
+const RealisticBobbin: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Spinning effect for the wound threads
+      gsap.to(".wound-thread", {
+        strokeDashoffset: -40,
+        ease: "none",
+        duration: 0.8,
+        repeat: -1,
+      });
+
+      // Flowing effect for the incoming thread
+      gsap.to(".incoming-thread-dash", {
+        strokeDashoffset: 40,
+        ease: "none",
+        duration: 0.8,
+        repeat: -1,
+      });
+
+      // High-frequency vibration for tension
+      gsap.to("#thread-path", {
+        attr: { d: "M 40,0 C 150,120 400,280 1200,600" }, // Slightly lower sag
+        duration: 0.08,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut"
+      });
+      
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Generate threads wound around the core
+  // Bobbin center is at (0,0) in the group.
+  // Core radius is 40. Height is from -130 to 130.
+  const wraps = Array.from({ length: 45 }).map((_, i) => {
+    const y = 120 - i * 5.3; 
+    return (
+      <path 
+        key={i} 
+        className="wound-thread"
+        d={`M -40 ${y} A 40 12 0 0 0 40 ${y}`} 
+        fill="none" 
+        stroke="#5fa8d3" 
+        strokeWidth="3.5"
+        strokeDasharray="20 20"
+        opacity={y > -10 && y < 10 ? 1 : 0.85}
+      />
+    );
+  });
+
+  return (
+    <div ref={containerRef} className="w-full h-full flex items-center justify-center relative overflow-visible">
+      <svg viewBox="0 0 600 600" className="w-full h-full overflow-visible drop-shadow-[0_0_25px_rgba(95,168,211,0.2)]">
+        
+        {/* Transform group to center the bobbin easily */}
+        <g transform="translate(350, 300)">
+          
+          {/* Core background (the dark cylinder inside) */}
+          <path d="M -40 -140 L -40 140 A 40 12 0 0 0 40 140 L 40 -140 Z" fill="#040b14" stroke="#122a42" strokeWidth="2" />
+
+          {/* The wound threads */}
+          <g id="wound-threads-group">
+            {wraps}
+          </g>
+
+          {/* Top Flange */}
+          <path d="M -90 -140 A 90 22 0 0 1 90 -140" fill="none" stroke="#254d6b" strokeWidth="2" />
+          <path d="M -90 -140 L -90 -120 A 90 22 0 0 0 90 -120 L 90 -140 A 90 22 0 0 1 -90 -140 Z" fill="#081527" stroke="#387499" strokeWidth="2" strokeLinejoin="round" />
+          <ellipse cx="0" cy="-140" rx="90" ry="22" fill="#0b1b33" stroke="#488ab3" strokeWidth="1.5" />
+          <ellipse cx="0" cy="-140" rx="14" ry="4" fill="#000" opacity="0.7" />
+
+          {/* Bottom Flange */}
+          <ellipse cx="0" cy="140" rx="90" ry="22" fill="#0b1b33" stroke="#254d6b" strokeWidth="1" />
+          <path d="M -90 140 L -90 160 A 90 22 0 0 0 90 160 L 90 140 A 90 22 0 0 1 -90 140 Z" fill="#081527" stroke="#387499" strokeWidth="2" strokeLinejoin="round" />
+
+          {/* Tangential Thread (taut) - Originating exactly from the right edge of the core (x=40, y=0) */}
+          <g className="thread-connection">
+            {/* Glow/Shadow base */}
+            <path d="M 40,0 C 150,100 400,250 1200,600" fill="none" stroke="#5fa8d3" strokeWidth="1.5" opacity="0.5" />
+            {/* Animated dashed thread */}
+            <path 
+              id="thread-path" 
+              className="incoming-thread-dash" 
+              d="M 40,0 C 150,100 400,250 1200,600" 
+              fill="none" 
+              stroke="#5fa8d3" 
+              strokeWidth="3.5" 
+              strokeDasharray="20 20" 
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  );
+};
 
 export const Portada: React.FC = () => {
   return (
-    <SlideShell id="portada" n={1} title="ALPACLADD" kind="portada" bgType="navy">
-      <div className="h-full grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-        {/* Title and Info */}
-        <div className="space-y-6 text-left">
-          <div className="flex items-center space-x-3">
-            <img src="/logotipo.png" alt="ALPACLADD" className="w-8 h-8 object-contain drop-shadow-[0_0_10px_rgba(95,168,211,0.5)]" />
-            <div className="inline-block border border-sky/30 bg-sky/5 px-3 py-1 text-[10px] tracking-[0.2em] text-sky uppercase font-mono rounded">
-              FÁBRICA DE HILADOS DESDE 2026
-            </div>
-          </div>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold uppercase tracking-wider text-off leading-none">
-            PRECISIÓN <br />
-            <span className="text-sky">TEXTIL</span>
-          </h1>
-          <p className="text-xs sm:text-sm md:text-base text-slate-200 max-w-md font-normal leading-relaxed">
-            Estructura de marca, manual de identidad visual y planeamiento de marketing estratégico B2B para la hilandería líder en calidad y tecnología de hilado.
-          </p>
-          <div className="pt-2 sm:pt-4 flex items-center space-x-4 sm:space-x-6">
-            <div className="flex flex-col">
-              <span className="text-[9px] sm:text-[10px] text-slate-300 uppercase tracking-widest font-mono font-medium">Diseño de Experiencia</span>
-              <span className="text-[11px] sm:text-xs text-sky font-bold">Creative Dev Team</span>
-            </div>
-            <div className="w-[1px] h-6 sm:h-8 bg-sky/30" />
-            <div className="flex flex-col">
-              <span className="text-[9px] sm:text-[10px] text-slate-300 uppercase tracking-widest font-mono font-medium">Navegación</span>
-              <span className="text-[11px] sm:text-xs text-sky font-bold">Teclas / Swipe / Rueda</span>
-            </div>
-          </div>
+    // Title is empty to avoid repeating the brand name in the header
+    <SlideShell id="portada" n={1} title="" kind="portada" bgType="navy">
+      <div className="h-full grid grid-cols-1 md:grid-cols-2 items-center gap-10 overflow-visible">
+        
+        {/* Brand Logo - Uses vector BrandLogo to respect exactly the brand colors on dark bg */}
+        <div className="flex flex-col justify-center items-center md:items-start space-y-6 md:space-y-10 text-center md:text-left h-full z-10 relative">
+          <BrandLogo variant="imagotipo" theme="navy" size="2xl" withGlow={true} />
         </div>
 
-        {/* Large 3D Spinning Cone Graphic */}
-        <div className="relative flex justify-center items-center h-48 sm:h-72 md:h-96">
-          {/* Animated Glow behind graphic */}
-          <div className="absolute w-48 sm:w-64 h-48 sm:h-64 bg-sky/5 rounded-full filter blur-3xl animate-pulse" />
+        {/* GSAP Realistic Bobbin Animation */}
+        <div className="relative flex justify-center items-center h-64 sm:h-80 md:h-full z-0 overflow-visible">
+          {/* Subtle Ambient Glow */}
+          <div className="absolute w-64 h-64 bg-sky/10 rounded-full filter blur-[100px] pointer-events-none" />
           
-          <div className={`${animStyles.animFloat} relative w-44 h-44 sm:w-60 sm:h-60`}>
-            {/* Spinning Spindle Lines */}
-            <svg
-              className={`${animStyles.animSpin3D} w-full h-full`}
-              viewBox="0 0 200 200"
-              fill="none"
-            >
-              {/* Spinning Cone Skeleton */}
-              <path
-                d="M100,20 L130,150 A30,10 0 0,1 70,150 Z"
-                className="stroke-sky/40"
-                strokeWidth="1.5"
-              />
-              {/* Weaving Threads around cone */}
-              <ellipse cx="100" cy="150" rx="30" ry="10" className="stroke-sky" strokeWidth="1" />
-              <ellipse cx="100" cy="120" rx="24" ry="8" className="stroke-sky/80" strokeWidth="1" />
-              <ellipse cx="100" cy="90" rx="18" ry="6" className="stroke-sky/60" strokeWidth="1.2" />
-              <ellipse cx="100" cy="60" rx="12" ry="4" className="stroke-sky/40" strokeWidth="1.5" />
-              
-              {/* Spindle Core */}
-              <line x1="100" y1="10" x2="100" y2="180" className="stroke-sky" strokeWidth="2" />
-            </svg>
-            
-            {/* Thread coming off the cone */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 200 200">
-              <path
-                d="M100,20 Q180,60 140,120 T220,180"
-                className="stroke-sky"
-                strokeWidth="1.5"
-                fill="none"
-                strokeDasharray="4 4"
-              />
-            </svg>
-          </div>
+          <RealisticBobbin />
         </div>
       </div>
     </SlideShell>
   );
 };
+

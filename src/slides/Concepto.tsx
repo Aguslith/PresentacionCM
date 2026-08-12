@@ -1,8 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { SlideShell } from "../components/SlideShell";
 
 export const Concepto: React.FC = () => {
   const [torsion, setTorsion] = useState(650); // Twist per meter (tpm)
+
+  // Math to generate realistic 3D intertwining plies for the yarn
+  const { plies, energySpiral } = useMemo(() => {
+    const t = (torsion - 300) / (1200 - 300); // 0 to 1
+    const minFreq = 2;
+    const maxFreq = 25;
+    const freq = minFreq + t * (maxFreq - minFreq);
+    
+    // As torsion increases, the yarn becomes tighter (smaller amplitude)
+    const minAmp = 2.5;
+    const maxAmp = 10;
+    const amp = maxAmp - t * (maxAmp - minAmp);
+
+    const startX = 130;
+    const endX = 380;
+    const width = endX - startX;
+    const totalPlies = 3;
+
+    // Generate path strings for the plies
+    const generatedPlies = Array.from({ length: totalPlies }).map((_, i) => {
+      const phase = (i / totalPlies) * Math.PI * 2;
+      const points = [];
+      for (let x = 0; x <= width; x += 2) {
+        const angle = (x / width) * Math.PI * 2 * freq + phase;
+        // Introduce a slight dampening at the start to connect with the draft fibers
+        const damp = Math.min(1, x / 20); 
+        const y = 75 + Math.sin(angle) * amp * damp;
+        points.push(`${x === 0 ? "M" : "L"} ${startX + x},${y}`);
+      }
+      return points.join(" ");
+    });
+
+    // Generate an "energy spiral" that wraps around for an epic optical effect
+    const energyPoints = [];
+    for (let x = 0; x <= width; x += 4) {
+      // Counter-rotating high-frequency spiral
+      const angle = (x / width) * Math.PI * 2 * (freq * 1.5) - (Math.PI / 2);
+      const damp = Math.min(1, x / 30);
+      const y = 75 + Math.sin(angle) * (amp + 3) * damp;
+      energyPoints.push(`${x === 0 ? "M" : "L"} ${startX + x},${y}`);
+    }
+
+    return { plies: generatedPlies, energySpiral: energyPoints.join(" ") };
+  }, [torsion]);
 
   return (
     <SlideShell
@@ -27,91 +71,98 @@ export const Concepto: React.FC = () => {
             </p>
 
             {/* Interactive Control for demo */}
-            <div className="border border-sky/20 bg-sky/5 p-4 rounded-lg space-y-3">
-              <div className="flex justify-between text-[11px] font-mono text-slate-300">
-                <span className="font-semibold text-slate-200">SIMULADOR DE TORSIÓN</span>
-                <span className="text-sky font-bold">{torsion} TPM (Vueltas/m)</span>
+            <div className="border border-sky/20 bg-sky/5 p-4 rounded-lg space-y-3 relative overflow-hidden">
+              {/* Subtle background glow based on torsion level */}
+              <div 
+                className="absolute inset-0 bg-sky/20 blur-2xl transition-opacity duration-300"
+                style={{ opacity: (torsion - 300) / 1800 }}
+              />
+              
+              <div className="relative z-10 flex justify-between text-[11px] font-mono text-slate-300">
+                <span className="font-semibold text-slate-200">SIMULADOR DE TORSIÓN (3D)</span>
+                <span className="text-sky font-bold drop-shadow-[0_0_5px_rgba(95,168,211,0.5)]">{torsion} TPM</span>
               </div>
+              
               <input
                 type="range"
                 min="300"
                 max="1200"
                 value={torsion}
                 onChange={(e) => setTorsion(Number(e.target.value))}
-                className="w-full h-1 bg-navy border border-sky/30 rounded-lg appearance-none cursor-pointer accent-sky"
+                className="relative z-10 w-full h-1.5 bg-[#081527] border border-sky/40 rounded-lg appearance-none cursor-pointer accent-sky outline-none focus:ring-1 focus:ring-sky/50"
               />
-              <div className="text-[11px] text-slate-300 font-light">
-                Ajuste la torsión para observar la densidad y el ángulo de espiral resultante del hilo de algodón peinado.
+              <div className="relative z-10 text-[10px] sm:text-[11px] text-slate-300 font-light leading-relaxed">
+                Ajusta la torsión para observar la <strong>densidad de espiras</strong> y el <strong>diámetro dinámico</strong> del hilo tridimensional.
               </div>
             </div>
           </div>
 
           {/* Interactive SVG Diagram */}
           <div className="md:col-span-6 flex flex-col items-center">
-            <div className="w-full bg-navy/60 border border-sky/20 rounded-xl p-6 relative overflow-hidden shadow-lg">
-              <div className="text-[10px] font-mono text-slate-300 absolute top-3 left-3 tracking-wider">
+            <div className="w-full bg-[#081527] border border-sky/30 rounded-xl p-6 relative overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+              {/* Grid Background inside the diagram */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none" 
+                style={{ backgroundImage: 'linear-gradient(#5fa8d3 1px, transparent 1px), linear-gradient(90deg, #5fa8d3 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+              </div>
+
+              <div className="text-[10px] font-mono text-sky/80 absolute top-4 left-4 tracking-wider z-10">
                 ANÁLISIS ESTRUCTURAL DE FIBRA
               </div>
 
               {/* Dynamic SVG twisted yarn */}
-              <svg className="w-full h-44" viewBox="0 0 400 150">
+              <svg className="w-full h-48 md:h-56 relative z-10 overflow-visible" viewBox="0 0 400 150">
                 {/* Fibers entering from left (dispersed) */}
-                <path
-                  d="M10,40 Q60,38 120,60"
-                  className="stroke-sky/40"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                <path
-                  d="M10,65 Q60,60 120,70"
-                  className="stroke-sky/30"
-                  strokeWidth="1.2"
-                  fill="none"
-                />
-                <path
-                  d="M10,85 Q60,82 120,80"
-                  className="stroke-sky/50"
-                  strokeWidth="1"
-                  fill="none"
-                />
-                <path
-                  d="M10,110 Q60,95 120,90"
-                  className="stroke-sky/30"
-                  strokeWidth="1.6"
-                  fill="none"
-                />
+                <g className="fibers-in">
+                  <path d="M5,35 Q60,35 125,75" className="stroke-sky/30" strokeWidth="1" fill="none" />
+                  <path d="M5,55 Q60,55 125,75" className="stroke-sky/50" strokeWidth="1.5" fill="none" />
+                  <path d="M5,75 Q60,75 125,75" className="stroke-sky/70" strokeWidth="2" fill="none" />
+                  <path d="M5,95 Q60,95 125,75" className="stroke-sky/50" strokeWidth="1.5" fill="none" />
+                  <path d="M5,115 Q60,115 125,75" className="stroke-sky/30" strokeWidth="1" fill="none" />
+                </g>
 
                 {/* Drafting rolls representation */}
-                <rect x="110" y="45" width="20" height="60" rx="3" fill="none" className="stroke-sky/30" strokeWidth="1" strokeDasharray="2 2" />
-                <text x="120" y="40" className="fill-sky/70 text-[8px] font-mono font-bold" textAnchor="middle">ESTIRADO</text>
+                <rect x="115" y="45" width="15" height="60" rx="4" fill="none" className="stroke-sky/40" strokeWidth="1.5" strokeDasharray="3 3" />
+                <text x="122.5" y="38" className="fill-sky text-[8px] font-mono font-bold tracking-widest" textAnchor="middle">ZONA DE TORSION</text>
 
-                {/* Twisted fiber consolidation (middle to right) */}
-                {/* Helix path based on state 'torsion' */}
-                <path
-                  d={`M130,75 C160,${75 - torsion/40} 180,${75 + torsion/40} 210,75 C240,${75 - torsion/40} 260,${75 + torsion/40} 290,75 T380,75`}
-                  className="stroke-sky"
-                  strokeWidth="3.5"
-                  fill="none"
-                  strokeDasharray={torsion > 800 ? "none" : "8 2"}
-                />
+                {/* Epic 3D Twisted Yarn */}
+                <g className="twisted-yarn" style={{ filter: `drop-shadow(0 0 ${2 + (torsion-300)/100}px rgba(95,168,211,0.6))` }}>
+                  {/* Outer Energy Spiral (Techy effect) */}
+                  <path
+                    d={energySpiral}
+                    className="stroke-white"
+                    strokeWidth="0.8"
+                    fill="none"
+                    strokeDasharray="4 6"
+                    opacity="0.6"
+                  />
 
-                {/* Highlight threads wrapped around */}
-                <path
-                  d={`M130,75 T170,75 T210,75 T250,75 T290,75 T330,75 T370,75`}
-                  className="stroke-sky/90"
-                  strokeWidth="1.2"
-                  fill="none"
-                />
+                  {/* 3 Plies of the yarn */}
+                  <path d={plies[0]} className="stroke-[#0284c7]" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d={plies[1]} className="stroke-[#38bdf8]" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d={plies[2]} className="stroke-[#bae6fd]" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  
+                  {/* Dark shading to give physical 3D volume */}
+                  <path d={plies[0]} className="stroke-black/30" strokeWidth="3" fill="none" transform="translate(0, 1.5)" />
+                </g>
 
                 {/* Spindle head on the right */}
-                <circle cx="380" cy="75" r="4" className="fill-off" />
-                <path d="M380,50 L380,100" className="stroke-sky/50" strokeWidth="1.5" />
-                <text x="380" y="45" className="fill-sky text-[8px] font-mono font-bold" textAnchor="middle">HILADO</text>
+                <g className="spindle" transform="translate(380, 75)">
+                  <circle cx="0" cy="0" r="5" className="fill-off shadow-lg" />
+                  <circle cx="0" cy="0" r="2" className="fill-navy" />
+                  <line x1="0" y1="-25" x2="0" y2="25" className="stroke-sky/60" strokeWidth="2" strokeLinecap="round" />
+                  <text x="0" y="-32" className="fill-sky text-[8px] font-mono font-bold tracking-widest" textAnchor="middle">EJE</text>
+                </g>
               </svg>
 
-              <div className="flex justify-between items-center text-[11px] font-mono text-slate-300 mt-2 pt-2 border-t border-sky/15">
-                <span>Estado: <strong className="text-slate-100">Torsionado</strong></span>
-                <span className="text-sky font-semibold">Tensión: OK</span>
+              <div className="flex justify-between items-center text-[11px] font-mono text-slate-300 mt-2 pt-4 border-t border-sky/20">
+                <span className="flex items-center space-x-2">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky"></span>
+                  </span>
+                  <span>Estado: <strong className="text-white">Torsionado Continuo</strong></span>
+                </span>
+                <span className="text-sky font-bold px-2 py-1 bg-sky/10 rounded border border-sky/30">ESTRUCTURA: ÓPTIMA</span>
               </div>
             </div>
           </div>

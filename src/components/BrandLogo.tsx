@@ -1,6 +1,6 @@
 import React from "react";
 
-export type LogoVariant = "horizontal" | "vertical" | "isotype";
+export type LogoVariant = "horizontal" | "vertical" | "isotype" | "logotipo" | "isologo" | "imagotipo";
 export type LogoTheme = "navy" | "light" | "grayscale" | "monochrome-white" | "monochrome-black" | "embroidery" | "kraft";
 export type LogoSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
@@ -21,6 +21,9 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   showTagline = true,
   withGlow = false,
 }) => {
+  // Aliases for the new types
+  const actualVariant = variant === "imagotipo" ? "horizontal" : variant === "isologo" ? "vertical" : variant;
+
   // Sizing mappings
   const sizeConfig = {
     xs: {
@@ -126,7 +129,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     </div>
   );
 
-  if (variant === "isotype") {
+  if (actualVariant === "isotype") {
     return (
       <div className={`inline-flex items-center justify-center ${className}`}>
         {isotypeNode}
@@ -137,7 +140,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   const typographyNode = (
     <div
       className={`flex flex-col select-none ${
-        variant === "vertical" ? "items-center text-center" : "items-start text-left"
+        actualVariant === "vertical" ? "items-center text-center mt-2" : "items-start text-left"
       }`}
     >
       <span
@@ -157,10 +160,18 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     </div>
   );
 
+  if (actualVariant === "logotipo") {
+    return (
+      <div className={`inline-flex items-center justify-center ${className}`}>
+        {typographyNode}
+      </div>
+    );
+  }
+
   return (
     <div
       className={`inline-flex ${
-        variant === "vertical" ? "flex-col items-center text-center" : "flex-row items-center"
+        actualVariant === "vertical" ? "flex-col items-center text-center" : "flex-row items-center"
       } ${sizeConfig.gap} ${className}`}
     >
       {isotypeNode}

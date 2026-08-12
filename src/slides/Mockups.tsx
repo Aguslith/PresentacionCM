@@ -31,54 +31,54 @@ export const Mockups: React.FC = () => {
       id: 1,
       title: "Remera Corporativa & Modelos",
       tag: "01 // INDUMENTARIA",
-      badge: "VIDEO EN VIVO",
+      badge: "INDUMENTARIA",
       type: "video",
       src: "/mockups/modelos_remera.mp4",
       material: "Jersey de algodón peinado 30/1 (100% hilado ALPACLADD)",
       tecnica: "Estampado al agua + bordado de alta definición",
       target: "Uniformes de equipo comercial, ferias textiles y directivos",
       description:
-        "Demostración de indumentaria textil confeccionada íntegramente con hilados peinados ALPACLADD. Caída suave, resistencia a lavados industriales y cero pilling.",
+        "Demostración de indumentaria textil confeccionada íntegramente con hilados peinados ALPACLADD. Caída suave, resistencia a lavados industriales y máxima durabilidad.",
     },
     {
       id: 2,
       title: "Mochila Técnica Impermeable",
-      tag: "02 // MOCHILA 3D",
-      badge: "RENDER 3D LOOP",
+      tag: "02 // MOCHILA TÉCNICA",
+      badge: "ACCESORIOS",
       type: "video",
       src: "/mockups/mochila_loop.mp4",
       altSrc: "/mockups/mochila_foto.jpeg",
       material: "Poliéster técnico impermeable 600D balístico",
-      tecnica: "Bordado computarizado 3D en hilo Sky Blue reflectivo",
+      tecnica: "Bordado computarizado en hilo Sky Blue reflectivo",
       target: "Kit de bienvenida para ingenieros de planta y ejecutivos",
       description:
-        "Render 3D en rotación continua 360°. Permite apreciar el volumen tridimensional del isotipo bordado en contraste con el tejido oscuro impermeable.",
+        "Mochila técnica impermeable con bordado de alta definición del imagotipo ALPACLADD en contraste con tejido balístico.",
     },
     {
       id: 3,
-      title: "Termo Inox Rotación 360°",
-      tag: "03 // TERMO 3D",
-      badge: "RENDER 3D LOOP",
+      title: "Termo Inox Institucional",
+      tag: "03 // TERMO INOX",
+      badge: "MERCHANDISING",
       type: "video",
       src: "/mockups/termo_rotando.mp4",
       material: "Acero inoxidable 304 bicapa con vacío térmico",
       tecnica: "Grabado láser de fibra óptica con acabado mate",
       target: "Merchandising de fidelización para clientes B2B recurrentes",
       description:
-        "Modelado y animación tridimensional del termo institucional. El isotipo se graba con láser de fibra perimetral, resistente al desgaste y solventes de taller.",
+        "Termo institucional grabado en láser de fibra perimetral, altamente resistente al desgaste y diseñado para uso industrial y corporativo.",
     },
     {
       id: 4,
       title: "Set Matero & Termo ALPACLADD",
       tag: "04 // KIT MERCHANDISING",
-      badge: "FOTOGRAFÍA REAL",
+      badge: "KIT COMPLETO",
       type: "image",
       src: "/mockups/termo_mate_foto.jpeg",
       material: "Mate térmico inox con bombilla y termo de 1L en caja rígida",
       tecnica: "Grabado láser de precisión + caja rígida azul institucional",
       target: "Regalo de fin de año y acuerdos con tejedurías e hilanderías",
       description:
-        "Composición fotográfica en planta industrial del set matero institucional. Aplicación sobria del imagotipo respetando áreas de seguridad y contraste.",
+        "Composición en planta industrial del set matero institucional. Aplicación sobria del imagotipo respetando áreas de seguridad y contraste.",
     },
   ];
 
@@ -92,22 +92,10 @@ export const Mockups: React.FC = () => {
 
   return (
     <SlideShell id="mockups" n={14} title="Aplicaciones de Marca (Mockups)" kind="galeria" bgType="off">
-      <div className="h-full flex flex-col justify-between py-1">
-        <div className="space-y-3 my-auto">
-          {/* Header Description */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 max-w-6xl mx-auto">
-            <p className="text-xs md:text-sm text-slate-800 text-left font-normal max-w-2xl">
-              Ecosistema de piezas corporativas en <strong className="text-navy">formato vertical</strong>: renders 3D en video loop, indumentaria con hilados propios y set matero de fidelización B2B.
-            </p>
-
-            <div className="text-[9px] font-mono text-blue bg-blue/5 border border-blue/15 px-2.5 py-1 rounded-full flex items-center space-x-1.5 self-start sm:self-auto font-bold">
-              <Sparkles className="w-3 h-3 text-sky" />
-              <span>4 PIEZAS VERTICALES INTERACTIVAS</span>
-            </div>
-          </div>
-
+      <div className="h-full flex flex-col justify-between py-2">
+        <div className="space-y-4 my-auto max-w-6xl mx-auto w-full">
           {/* 4 Vertical Columns Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 max-w-6xl mx-auto text-left">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-left">
             {mockups.map((m) => {
               const currentMode = viewModes[m.id] || m.type;
               const currentSrc =
@@ -122,10 +110,10 @@ export const Mockups: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: m.id * 0.08 }}
                   onClick={() => setSelectedMockup(m)}
-                  className="bg-white border border-navy/15 p-1.5 sm:p-2.5 rounded-2xl flex flex-col justify-between h-[260px] sm:h-[340px] md:h-[380px] shadow-sm hover:shadow-2xl hover:border-blue/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
+                  className="bg-white border border-navy/15 p-2 sm:p-3 rounded-2xl flex flex-col justify-between h-[280px] sm:h-[360px] md:h-[400px] shadow-sm hover:shadow-2xl hover:border-blue/50 transition-all duration-300 cursor-pointer group relative overflow-hidden"
                 >
                   {/* Vertical Media Container */}
-                  <div className="flex-grow rounded-xl overflow-hidden bg-navy/95 relative flex items-center justify-center h-36 sm:h-52 md:h-64 border border-navy/10">
+                  <div className="flex-grow rounded-xl overflow-hidden bg-navy/95 relative flex items-center justify-center h-44 sm:h-60 md:h-72 border border-navy/10">
                     {isVideo ? (
                       <video
                         src={currentSrc}
@@ -144,30 +132,14 @@ export const Mockups: React.FC = () => {
                       />
                     )}
 
-                    {/* Top Pill: Video / Photo badge */}
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[7.5px] font-mono uppercase flex items-center space-x-1 border border-white/20">
-                      {isVideo ? (
-                        <>
-                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                          <Play className="w-2 h-2 fill-white" />
-                          <span>{m.badge}</span>
-                        </>
-                      ) : (
-                        <>
-                          <ImageIcon className="w-2 h-2 text-sky" />
-                          <span>{m.badge}</span>
-                        </>
-                      )}
-                    </div>
-
-                    {/* Optional Toggle Button for Mochila (Video 3D / Foto) */}
+                    {/* Optional Toggle Button for Mochila */}
                     {m.altSrc && (
                       <button
                         onClick={(e) => toggleViewMode(e, m.id)}
-                        className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-white/80 hover:bg-white text-navy text-[7px] font-mono font-bold uppercase backdrop-blur-sm transition-all shadow"
-                        title="Alternar entre Video 3D y Foto"
+                        className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 hover:bg-black/80 text-white text-[7.5px] font-mono font-semibold uppercase backdrop-blur-md transition-all shadow border border-white/20 z-10"
+                        title="Alternar vista"
                       >
-                        {currentMode === "video" ? "Ver Foto" : "Ver 3D"}
+                        {currentMode === "video" ? "Ver Foto" : "Ver Video"}
                       </button>
                     )}
 
@@ -176,13 +148,13 @@ export const Mockups: React.FC = () => {
                       <div className="w-8 h-8 rounded-full bg-blue/40 flex items-center justify-center border border-sky/40 shadow-lg">
                         <Eye className="w-4 h-4 text-sky" />
                       </div>
-                      <span className="font-bold tracking-wider">INSPECCIONAR PIEZA</span>
-                      <span className="text-[7px] text-sky/80">Clic para ver ficha técnica</span>
+                      <span className="font-bold tracking-wider">VER DETALLES</span>
+                      <span className="text-[7.5px] text-sky/80">Clic para ficha técnica</span>
                     </div>
                   </div>
 
                   {/* Card Info Footer */}
-                  <div className="mt-2.5 px-1 space-y-0.5">
+                  <div className="mt-3 px-1 space-y-0.5">
                     <div className="flex justify-between items-center">
                       <span className="text-[8.5px] font-mono text-blue font-bold tracking-tight uppercase">
                         {m.tag}
@@ -205,8 +177,8 @@ export const Mockups: React.FC = () => {
             })}
           </div>
 
-          <div className="text-center text-[10px] text-slate-600 font-mono font-medium">
-            Haz clic en cualquier pieza vertical para reproducir en grande e inspeccionar su ficha de producción técnica
+          <div className="text-center text-[10px] text-slate-500 font-mono">
+            Haz clic en cualquier producto para ver su ficha de producción técnica
           </div>
         </div>
 

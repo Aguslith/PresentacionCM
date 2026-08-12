@@ -95,49 +95,76 @@ export const Construccion: React.FC = () => {
                 >
                   {step === 0 && (
                     /* Sketch rendering */
-                    <svg className="w-48 h-48" viewBox="0 0 100 100">
-                      <path d="M50,15 L80,75 L20,75 Z" className="stroke-gray/40" strokeWidth="0.5" fill="none" />
-                      <path
-                        d="M50,18 L76,73 L24,73 Z M50,28 L64,65 L36,65 Z"
-                        className="stroke-navy/60"
-                        strokeWidth="1.2"
-                        strokeDasharray="1 1"
-                        fill="none"
-                      />
-                      <line x1="25" y1="40" x2="75" y2="55" className="stroke-navy/40" strokeWidth="1" strokeDasharray="2 2" />
-                      <line x1="25" y1="52" x2="75" y2="67" className="stroke-navy/40" strokeWidth="1" strokeDasharray="2 2" />
+                    <svg className="w-48 h-48 sm:w-56 sm:h-56" viewBox="0 0 100 100">
+                      {/* Background circular guides */}
+                      <circle cx="50" cy="55" r="35" className="stroke-slate-300/40" strokeWidth="0.5" strokeDasharray="2 4" fill="none" />
+                      <circle cx="50" cy="55" r="25" className="stroke-slate-300/40" strokeWidth="0.5" strokeDasharray="2 4" fill="none" />
                       
-                      <circle cx="50" cy="50" r="30" className="stroke-blue/20" strokeWidth="0.5" strokeDasharray="3 3" fill="none" />
-                      <line x1="50" y1="5" x2="50" y2="95" className="stroke-blue/20" strokeWidth="0.5" />
+                      {/* Right leg sketch (Navy part) */}
+                      <path d="M50,20 L75,80 M52,20 L78,80 M48,20 L72,80 M50,20 L58,80 M55,20 L70,80" className="stroke-slate-600" strokeWidth="0.6" fill="none" />
+                      <path d="M60,40 L70,40 M65,50 L75,50 M70,60 L80,60 M62,80 L78,80" className="stroke-slate-400" strokeWidth="0.4" fill="none" />
+                      
+                      {/* Left leg sketch (Sky part) */}
+                      <path d="M50,20 L25,80 M50,20 L30,80 M48,20 L28,80" className="stroke-slate-400" strokeWidth="0.6" fill="none" />
+                      
+                      {/* Horizontal threads / bands sketch (Tension threads) */}
+                      <path d="M35,40 L65,45 M34,42 L64,47 M33,44 L63,49" className="stroke-blue/40" strokeWidth="0.8" fill="none" />
+                      <path d="M30,55 L70,60 M28,57 L68,62 M26,59 L66,64" className="stroke-blue/40" strokeWidth="0.8" fill="none" />
+                      <path d="M25,70 L75,75 M23,72 L73,77" className="stroke-blue/40" strokeWidth="0.8" fill="none" />
+                      
+                      {/* Perspective lines */}
+                      <line x1="10" y1="90" x2="90" y2="20" className="stroke-blue/20" strokeWidth="0.5" strokeDasharray="1 3" />
+                      <line x1="10" y1="20" x2="90" y2="90" className="stroke-blue/20" strokeWidth="0.5" strokeDasharray="1 3" />
                     </svg>
                   )}
 
                   {step === 1 && (
                     /* Mathematical grid construction rendering */
-                    <svg className="w-48 h-48" viewBox="0 0 100 100">
-                      <line x1="10" y1="50" x2="90" y2="50" className="stroke-blue/20" strokeWidth="0.5" />
-                      <line x1="50" y1="10" x2="50" y2="90" className="stroke-blue/20" strokeWidth="0.5" />
+                    <svg className="w-48 h-48 sm:w-56 sm:h-56" viewBox="0 0 100 100">
+                      {/* Grid */}
+                      <defs>
+                        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                          <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(95,168,211,0.15)" strokeWidth="0.3" />
+                        </pattern>
+                      </defs>
+                      <rect width="100" height="100" fill="url(#grid)" />
                       
-                      <path d="M50,15 L80,75 L20,75 Z" className="stroke-blue/50" strokeWidth="0.8" fill="none" />
-                      <polygon points="50,15 78,80 62,80 38,30" className="stroke-navy/70 fill-navy/10" strokeWidth="1" />
-                      <polygon points="20,80 45,20 60,20 35,80" className="stroke-blue fill-blue/15" strokeWidth="1" />
+                      {/* Axes */}
+                      <line x1="50" y1="0" x2="50" y2="100" className="stroke-blue/30" strokeWidth="0.5" />
+                      <line x1="0" y1="80" x2="100" y2="80" className="stroke-blue/30" strokeWidth="0.5" />
                       
-                      <line x1="28" y1="40" x2="68" y2="52" className="stroke-blue" strokeWidth="1.5" />
-                      <line x1="25" y1="52" x2="65" y2="64" className="stroke-blue" strokeWidth="1.5" />
-                      <line x1="22" y1="64" x2="62" y2="76" className="stroke-blue" strokeWidth="1.5" />
+                      {/* Blueprint "A" Shapes */}
+                      {/* Right leg solid blueprint (Navy) */}
+                      <polygon points="50,20 65,20 85,80 65,80" className="stroke-navy/80 fill-navy/10" strokeWidth="1" />
                       
-                      <text x="82" y="78" className="fill-blue text-[5px] font-mono">60°</text>
-                      <text x="18" y="78" className="fill-blue text-[5px] font-mono">60°</text>
+                      {/* Left leg solid blueprint (Sky) */}
+                      <polygon points="50,20 35,20 15,80 35,80" className="stroke-sky/80 fill-sky/10" strokeWidth="1" />
+                      
+                      {/* The cuts/bands over the left leg representing thread */}
+                      <polygon points="28,40 55,45 52,52 24,47" className="stroke-sky fill-white" strokeWidth="1" />
+                      <polygon points="22,55 50,60 47,67 19,62" className="stroke-sky fill-white" strokeWidth="1" />
+                      
+                      {/* Angle annotations & Guides */}
+                      <path d="M 65,80 A 15 15 0 0 0 75,70" className="stroke-blue" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+                      <text x="75" y="65" className="fill-blue text-[4px] font-mono">60°</text>
+                      
+                      <path d="M 35,80 A 15 15 0 0 1 25,70" className="stroke-blue" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+                      <text x="15" y="65" className="fill-blue text-[4px] font-mono">60°</text>
+                      
+                      {/* Measurement nodes */}
+                      <circle cx="50" cy="20" r="1.5" className="fill-blue" />
+                      <circle cx="15" cy="80" r="1.5" className="fill-blue" />
+                      <circle cx="85" cy="80" r="1.5" className="fill-blue" />
                     </svg>
                   )}
 
                   {step === 2 && (
-                    /* Final polished brand logo rendering */
+                    /* Final polished brand logo rendering (Isotype ONLY per user request) */
                     <div className="flex flex-col items-center justify-center p-4">
                       <BrandLogo
-                        variant="horizontal"
+                        variant="isotype"
                         theme="light"
-                        size="md"
+                        size="2xl"
                       />
                     </div>
                   )}

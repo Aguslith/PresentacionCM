@@ -6,17 +6,33 @@ import { Grid, Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const Logo: React.FC = () => {
-  const [variant, setVariant] = useState<"horizontal" | "vertical" | "isotype">("horizontal");
+  const [variant, setVariant] = useState<"imagotipo" | "isotipo" | "logotipo" | "isologo">("imagotipo");
   const [showGrid, setShowGrid] = useState<boolean>(true);
 
+  // Dynamic description based on selected variant
+  const getVariantDescription = () => {
+    switch (variant) {
+      case "imagotipo":
+        return "El Imagotipo combina el símbolo (icono) con el texto. En esta versión conviven ambos elementos de forma separada pero equilibrada, ideal para firmas corporativas formales.";
+      case "isotipo":
+        return "El Isotipo integra la silueta del cono de hilado y la inicial estructural 'A' en azul institucional profundo. Posee alta recordación visual y funciona de manera independiente.";
+      case "logotipo":
+        return "El Logotipo utiliza únicamente la tipografía corporativa. Está compuesto por el nombre de la marca (Raleway Bold) proyectando escala corporativa y seriedad técnica.";
+      case "isologo":
+        return "El Isologo unifica el símbolo y el texto dentro de una misma forma indivisible o emblema. Ideal para sellos de calidad, etiquetas de producto o avatares de redes sociales.";
+      default:
+        return "";
+    }
+  };
+
   return (
-    <SlideShell id="logo" n={5} title="Imagotipo Principal" kind="mockup" bgType="navy">
+    <SlideShell id="logo" n={5} title="Tipos de logos para Alpacladd" kind="mockup" bgType="navy">
       <div className="h-full flex flex-col justify-between py-2">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto">
           {/* Controls & Notes */}
           <div className="md:col-span-5 text-left space-y-5">
-            <p className="text-sm text-slate-200 font-normal leading-relaxed">
-              La marca <strong className="text-white font-bold">ALPACLADD</strong> utiliza un imagotipo de alta recordación y arquitectura 3D. El isotipo integra tres elementos clave en su morfología: la silueta del cono de hilado, el devanado en bandas paralelas de hilos continuos en Sky Blue, y la inicial estructural "A" en azul institucional profundo.
+            <p className="text-sm text-slate-200 font-normal leading-relaxed min-h-[80px]">
+              {getVariantDescription()}
             </p>
 
             {/* Select Switcher */}
@@ -37,11 +53,12 @@ export const Logo: React.FC = () => {
                   <span>{showGrid ? "Retícula: ON" : "Retícula: OFF"}</span>
                 </button>
               </div>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 lg:grid-cols-2 gap-2">
                 {[
-                  { id: "horizontal", label: "Horizontal" },
-                  { id: "vertical", label: "Vertical" },
-                  { id: "isotype", label: "Isotipo Solo" },
+                  { id: "imagotipo", label: "Imagotipo" },
+                  { id: "isotipo", label: "Isotipo" },
+                  { id: "logotipo", label: "Logotipo" },
+                  { id: "isologo", label: "Isologo" },
                 ].map((v) => (
                   <button
                     key={v.id}
@@ -100,12 +117,12 @@ export const Logo: React.FC = () => {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 1.05, y: -8 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="z-10 py-6"
+                  className="z-10 py-6 flex flex-col items-center justify-center w-full h-full"
                 >
                   <BrandLogo
-                    variant={variant}
+                    variant={variant === "isotipo" ? "isotype" : variant}
                     theme="navy"
-                    size={variant === "isotype" ? "xl" : "lg"}
+                    size={variant === "isotipo" || variant === "isologo" ? "xl" : "lg"}
                     withGlow={true}
                   />
                 </motion.div>

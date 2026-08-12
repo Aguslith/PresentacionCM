@@ -14,10 +14,22 @@ export const Isotipo: React.FC = () => {
             {/* Concept 1: Cono */}
             <div className="w-full border border-sky/20 bg-navy/60 p-2.5 sm:p-4 rounded-xl text-center space-y-2 hover:border-sky/50 transition-colors shadow-sm">
               <div className="h-16 sm:h-20 flex items-center justify-center">
-                <svg className="w-12 h-12 sm:w-14 sm:h-14" viewBox="0 0 100 100">
-                  <path d="M50,15 L80,75 L20,75 Z" className="stroke-sky" strokeWidth="2" fill="none" />
-                  <line x1="50" y1="15" x2="50" y2="75" className="stroke-sky/50" strokeWidth="1" strokeDasharray="3 3" />
-                  <ellipse cx="50" cy="75" rx="30" ry="8" className="stroke-sky/50" strokeWidth="1.2" fill="none" />
+                <svg className="w-12 h-12 sm:w-14 sm:h-14 overflow-visible" viewBox="0 0 100 100">
+                  {/* Top opening */}
+                  <ellipse cx="50" cy="20" rx="12" ry="4" className="stroke-sky" strokeWidth="2" fill="none" />
+                  {/* Bottom base */}
+                  <ellipse cx="50" cy="80" rx="35" ry="10" className="stroke-sky" strokeWidth="2" fill="none" />
+                  
+                  {/* Sides */}
+                  <line x1="38" y1="20" x2="15" y2="80" className="stroke-sky" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="62" y1="20" x2="85" y2="80" className="stroke-sky" strokeWidth="2" strokeLinecap="round" />
+                  
+                  {/* Center structural axis */}
+                  <line x1="50" y1="5" x2="50" y2="95" className="stroke-sky/40" strokeWidth="1.5" strokeDasharray="3 3" />
+                  
+                  {/* 3D wireframe contour lines */}
+                  <path d="M 23,60 Q 50,70 77,60" className="stroke-sky/40" strokeWidth="1" fill="none" />
+                  <path d="M 31,40 Q 50,48 69,40" className="stroke-sky/40" strokeWidth="1" fill="none" />
                 </svg>
               </div>
               <div>
