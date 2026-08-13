@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SlideShell } from "../components/SlideShell";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, Eye, X, Sparkles, Video, Image as ImageIcon } from "lucide-react";
+import { Eye, X, Video, Image as ImageIcon } from "lucide-react";
 
 interface VerticalMockupItem {
   id: number;

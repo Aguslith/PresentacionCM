@@ -9,11 +9,9 @@ import {
   Sparkles,
   CheckCircle2,
   ArrowRight,
-  MessageSquare,
   PackageCheck,
   Send,
   X,
-  ExternalLink,
   ShieldCheck,
 } from "lucide-react";
 

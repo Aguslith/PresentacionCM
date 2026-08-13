@@ -119,7 +119,7 @@ export const Reels: React.FC = () => {
     },
   ];
 
-  const currentReel = reelsData[currentReelIndex];
+  const currentReel = reelsData[currentReelIndex] ?? reelsData[0]!;
 
   const handleNextReel = () => {
     setCurrentReelIndex((prev) => (prev < reelsData.length - 1 ? prev + 1 : 0));

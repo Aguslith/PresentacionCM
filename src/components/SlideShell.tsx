@@ -1,6 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { TOKENS } from "../tokens";
+import { motion, type Variants } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import { ThreadFrameBackground } from "./ThreadFrameBackground";
 
@@ -40,8 +39,8 @@ export const SlideShell: React.FC<SlideShellProps> = ({
     return isNavy ? "bg-sky" : "bg-blue";
   };
 
-  // Hardware-accelerated motion variants
-  const containerVariants = {
+  // Hardware-accelerated motion variants with explicit Framer Motion typing
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
@@ -55,7 +54,7 @@ export const SlideShell: React.FC<SlideShellProps> = ({
     },
   };
 
-  const titleVariants = {
+  const titleVariants: Variants = {
     hidden: { opacity: 0, y: -10 },
     visible: {
       opacity: 1,

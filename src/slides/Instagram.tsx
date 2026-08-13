@@ -13,14 +13,12 @@ import {
   CheckCircle2,
   Grid,
   Tv,
-  UserCheck,
   Smile,
   BadgeCheck,
   Wifi,
   Battery,
   ChevronDown,
   Bell,
-  Sparkles,
   Layers,
   Factory,
   Settings,
@@ -45,7 +43,6 @@ export const Instagram: React.FC = () => {
   const [bookmarkedPosts, setBookmarkedPosts] = useState<Record<number, boolean>>({});
   const [newComment, setNewComment] = useState("");
   const [postComments, setPostComments] = useState<Record<number, { user: string; text: string; time: string; avatarBg: string }[]>>({});
-  const [activeTab, setActiveTab] = useState<"posts" | "reels">("posts");
 
   // 3D Smartphone Mouse Tilt Physics
   const cardRef = useRef<HTMLDivElement>(null);

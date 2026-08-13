@@ -8,17 +8,12 @@ import {
   Bookmark,
   MoreHorizontal,
   ExternalLink,
-  Sparkles,
-  TrendingUp,
   Target,
-  BarChart3,
   CheckCircle2,
   ShieldCheck,
   ArrowRight,
   BadgeCheck,
   Layers,
-  ThumbsUp,
-  Share2,
 } from "lucide-react";
 
 type FunnelStage = "tofu" | "mofu" | "bofu";
