@@ -40,29 +40,29 @@ export const SlideShell: React.FC<SlideShellProps> = ({
     return isNavy ? "bg-sky" : "bg-blue";
   };
 
-  // Motion variants matching TOKENS.motion
+  // Hardware-accelerated motion variants
   const containerVariants = {
-    hidden: { opacity: 0, x: 30 },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
-        ease: TOKENS.motion.ease,
-        duration: TOKENS.motion.duration,
+        ease: [0.16, 1, 0.3, 1],
+        duration: 0.6,
         when: "beforeChildren",
-        staggerChildren: TOKENS.motion.stagger,
+        staggerChildren: 0.08,
       },
     },
   };
 
   const titleVariants = {
-    hidden: { clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)", opacity: 0 },
+    hidden: { opacity: 0, y: -10 },
     visible: {
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
       opacity: 1,
+      y: 0,
       transition: {
-        ease: TOKENS.motion.ease,
-        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+        duration: 0.5,
       },
     },
   };
@@ -70,14 +70,14 @@ export const SlideShell: React.FC<SlideShellProps> = ({
   return (
     <section
       id={`slide-${id}`}
-      className={`slide-section w-full h-full min-h-[100dvh] max-h-[100dvh] flex flex-col justify-between p-4 sm:p-8 md:p-12 pt-6 sm:pt-8 md:pt-10 pb-4 sm:pb-6 relative select-none overflow-hidden transition-colors duration-500 ${getThemeClasses()}`}
+      className={`slide-section w-full h-full min-h-[100dvh] max-h-[100dvh] flex flex-col justify-between p-3 sm:p-6 md:p-8 lg:p-10 pt-4 sm:pt-6 md:pt-8 pb-3 sm:pb-5 relative select-none overflow-hidden transition-colors duration-500 ${getThemeClasses()}`}
     >
-      {/* Background Technical Grid & Framed Threads (Limpio, sin textos) */}
+      {/* Background Technical Grid & Framed Threads */}
       <ThreadFrameBackground isNavy={isNavy} isBlackAndWhite={isBlackAndWhite} />
 
       {/* Top Header - Ultra Clean & Minimal */}
-      <div className="flex justify-between items-center text-xs font-mono uppercase z-10 opacity-90 px-1">
-        <div className="flex items-center space-x-2.5">
+      <div className="flex justify-between items-center text-xs font-mono uppercase z-10 opacity-90 px-1 shrink-0">
+        <div className="flex items-center space-x-2">
           <img
             src="/logotipo.png"
             alt="ALPACLADD"
@@ -92,13 +92,13 @@ export const SlideShell: React.FC<SlideShellProps> = ({
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.15 }}
+        viewport={{ once: false, amount: 0.1 }}
         className="flex-grow flex flex-col justify-center max-w-6xl mx-auto w-full z-10 my-auto overflow-hidden"
       >
         {/* Slide Title */}
         <motion.h2
           variants={titleVariants}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-technical mb-3 sm:mb-5 md:mb-6 flex items-center leading-tight shrink-0"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-technical mb-2 sm:mb-4 md:mb-5 flex items-center leading-tight shrink-0"
         >
           <span
             className={`inline-block w-2 sm:w-2.5 h-2 sm:h-2.5 mr-2 sm:mr-3 rounded-full shrink-0 transition-colors duration-300 ${getBulletColor()}`}
@@ -107,13 +107,13 @@ export const SlideShell: React.FC<SlideShellProps> = ({
         </motion.h2>
 
         {/* Inner Content Area */}
-        <div className="flex-grow py-1 flex flex-col justify-center overflow-y-auto no-scrollbar max-h-[calc(100dvh-120px)]">
+        <div className="flex-grow py-0.5 flex flex-col justify-center overflow-y-auto no-scrollbar max-h-[calc(100dvh-100px)]">
           {children}
         </div>
       </motion.div>
 
-      {/* Bottom Footer - Minimal & Clean */}
-      <div className="z-10 h-2" />
+      {/* Bottom Footer Spacing */}
+      <div className="z-10 h-1 shrink-0" />
     </section>
   );
 };

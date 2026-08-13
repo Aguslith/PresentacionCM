@@ -39,8 +39,12 @@ export const ThreadFrameBackground: React.FC<ThreadFrameBackgroundProps> = ({
         }}
       />
 
-      {/* 2. Framed Technical Thread Perimeter & Infinite Sewing Machine Stitches */}
-      <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      {/* 2. Framed Technical Thread Perimeter & Sewing Stitches */}
+      <svg
+        className="absolute inset-0 w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
         <defs>
           <linearGradient
             id={`thread-glow-${isBlackAndWhite ? "bw" : isNavy ? "dark" : "light"}`}
@@ -53,74 +57,20 @@ export const ThreadFrameBackground: React.FC<ThreadFrameBackgroundProps> = ({
             <stop offset="50%" stopColor={accentColor} stopOpacity={isBlackAndWhite ? "0.15" : "0.2"} />
             <stop offset="100%" stopColor={accentColor} stopOpacity={isBlackAndWhite ? "0.35" : "0.4"} />
           </linearGradient>
-
-          <filter id="stitch-glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
         </defs>
 
-        {/* Framing Thread Rectangle with continuous infinite perimeter stitching */}
+        {/* Framing Thread Rectangle */}
         <rect
           x="16"
           y="14"
           width="calc(100% - 32px)"
           height="calc(100% - 28px)"
           fill="none"
-          stroke={`${strokeColor}0.25)`}
+          stroke={`${strokeColor}0.2)`}
           strokeWidth="1.2"
           strokeDasharray="6 5"
           className="animate-sewing-perimeter"
         />
-
-        {/* Corner Crosshairs */}
-        {/* Top-Left */}
-        <g>
-          <path
-            d="M 10 28 L 10 10 L 28 10"
-            fill="none"
-            stroke={accentColor}
-            strokeWidth="1.2"
-            strokeOpacity={isBlackAndWhite ? "0.4" : "0.5"}
-          />
-          <circle cx="10" cy="10" r="2" fill={accentColor} fillOpacity={isBlackAndWhite ? "0.7" : "0.85"} className="animate-needle-pulse" />
-        </g>
-
-        {/* Top-Right */}
-        <g transform="translate(calc(100% - 38px), 0)">
-          <path
-            d="M 28 28 L 28 10 L 10 10"
-            fill="none"
-            stroke={accentColor}
-            strokeWidth="1.2"
-            strokeOpacity={isBlackAndWhite ? "0.4" : "0.5"}
-          />
-          <circle cx="28" cy="10" r="2" fill={accentColor} fillOpacity={isBlackAndWhite ? "0.7" : "0.85"} className="animate-needle-pulse" style={{ animationDelay: "0.5s" }} />
-        </g>
-
-        {/* Bottom-Left */}
-        <g transform="translate(0, calc(100% - 38px))">
-          <path
-            d="M 10 10 L 10 28 L 28 28"
-            fill="none"
-            stroke={accentColor}
-            strokeWidth="1.2"
-            strokeOpacity={isBlackAndWhite ? "0.4" : "0.5"}
-          />
-          <circle cx="10" cy="28" r="2" fill={accentColor} fillOpacity={isBlackAndWhite ? "0.7" : "0.85"} className="animate-needle-pulse" style={{ animationDelay: "1s" }} />
-        </g>
-
-        {/* Bottom-Right */}
-        <g transform="translate(calc(100% - 38px), calc(100% - 38px))">
-          <path
-            d="M 28 10 L 28 28 L 10 28"
-            fill="none"
-            stroke={accentColor}
-            strokeWidth="1.2"
-            strokeOpacity={isBlackAndWhite ? "0.4" : "0.5"}
-          />
-          <circle cx="28" cy="28" r="2" fill={accentColor} fillOpacity={isBlackAndWhite ? "0.7" : "0.85"} className="animate-needle-pulse" style={{ animationDelay: "1.5s" }} />
-        </g>
 
         {/* 1. Sinuous Thread Wave 1 - Main Infinite Sewing Stitch */}
         <path
@@ -133,29 +83,29 @@ export const ThreadFrameBackground: React.FC<ThreadFrameBackgroundProps> = ({
           className="animate-sewing-flow"
         />
 
-        {/* 2. Secondary Interlaced Parallel Stitch (Pespunte doble / Costura de refuerzo) */}
+        {/* 2. Secondary Parallel Stitch */}
         <path
           d="M -80 300 C 270 100, 500 500, 820 200 C 1140 -60, 1360 400, 1700 240"
           fill="none"
-          stroke={`${strokeColor}0.18)`}
+          stroke={`${strokeColor}0.15)`}
           strokeWidth="1.2"
           strokeDasharray="4 7"
           strokeLinecap="round"
           className="animate-sewing-flow-fast"
         />
 
-        {/* 3. Subtle Reverse Needle Thread (Costura en cadeneta) */}
+        {/* 3. Subtle Reverse Needle Thread */}
         <path
           d="M -120 260 C 230 60, 460 460, 780 160 C 1100 -100, 1320 360, 1660 200"
           fill="none"
-          stroke={`${strokeColor}0.12)`}
+          stroke={`${strokeColor}0.1)`}
           strokeWidth="1"
           strokeDasharray="3 9"
           className="animate-sewing-flow"
           style={{ animationDirection: "reverse", animationDuration: "8s" }}
         />
 
-        {/* 4. Active Sewing Needle Puncture Nodes (Puntos de perforación de aguja) */}
+        {/* 4. Active Sewing Needle Nodes */}
         <g>
           {[
             { cx: "18%", cy: "22%", delay: "0s" },
@@ -183,6 +133,39 @@ export const ThreadFrameBackground: React.FC<ThreadFrameBackgroundProps> = ({
           ))}
         </g>
       </svg>
+
+      {/* 3. Clean CSS Corner Crosshairs (No SVG calc errors) */}
+      {/* Top-Left */}
+      <div className="absolute top-3.5 left-4 pointer-events-none">
+        <svg width="20" height="20" viewBox="0 0 20 20">
+          <path d="M 2 18 L 2 2 L 18 2" fill="none" stroke={accentColor} strokeWidth="1.2" strokeOpacity={0.4} />
+          <circle cx="2" cy="2" r="2" fill={accentColor} fillOpacity={0.8} />
+        </svg>
+      </div>
+
+      {/* Top-Right */}
+      <div className="absolute top-3.5 right-4 pointer-events-none">
+        <svg width="20" height="20" viewBox="0 0 20 20">
+          <path d="M 18 18 L 18 2 L 2 2" fill="none" stroke={accentColor} strokeWidth="1.2" strokeOpacity={0.4} />
+          <circle cx="18" cy="2" r="2" fill={accentColor} fillOpacity={0.8} />
+        </svg>
+      </div>
+
+      {/* Bottom-Left */}
+      <div className="absolute bottom-3.5 left-4 pointer-events-none">
+        <svg width="20" height="20" viewBox="0 0 20 20">
+          <path d="M 2 2 L 2 18 L 18 18" fill="none" stroke={accentColor} strokeWidth="1.2" strokeOpacity={0.4} />
+          <circle cx="2" cy="18" r="2" fill={accentColor} fillOpacity={0.8} />
+        </svg>
+      </div>
+
+      {/* Bottom-Right */}
+      <div className="absolute bottom-3.5 right-4 pointer-events-none">
+        <svg width="20" height="20" viewBox="0 0 20 20">
+          <path d="M 18 2 L 18 18 L 2 18" fill="none" stroke={accentColor} strokeWidth="1.2" strokeOpacity={0.4} />
+          <circle cx="18" cy="18" r="2" fill={accentColor} fillOpacity={0.8} />
+        </svg>
+      </div>
     </div>
   );
 };

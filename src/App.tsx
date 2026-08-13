@@ -20,7 +20,6 @@ import { Versiones } from "./slides/Versiones";
 import { Incorrectos } from "./slides/Incorrectos";
 import { Mockups } from "./slides/Mockups";
 import { Instagram } from "./slides/Instagram";
-import { Feed } from "./slides/Feed";
 import { Stories } from "./slides/Stories";
 import { Reels } from "./slides/Reels";
 import { Publicidad } from "./slides/Publicidad";
@@ -67,8 +66,6 @@ function App() {
         return <Mockups />;
       case "instagram":
         return <Instagram />;
-      case "feed":
-        return <Feed />;
       case "stories":
         return <Stories />;
       case "reels":
