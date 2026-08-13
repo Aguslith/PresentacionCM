@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { SlideShell } from "../components/SlideShell";
-import { MockupCard } from "../components/MockupCard";
 import { BrandLogo } from "../components/BrandLogo";
 import { Grid, Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -89,45 +88,81 @@ export const Logo: React.FC = () => {
             </div>
           </div>
 
-          {/* Interactive Logo Canvas */}
-          <div className="md:col-span-7 flex flex-col items-center">
-            <MockupCard className="w-full flex flex-col items-center justify-center p-8 bg-navy/80 min-h-80 relative overflow-hidden group">
-              {/* Background ambient lighting */}
-              <div className="absolute w-72 h-72 bg-sky/10 rounded-full filter blur-3xl pointer-events-none" />
+          {/* Interactive Logo Canvas - Open Stage without box, Large scale, Floating Levitation */}
+          <div className="md:col-span-7 flex flex-col items-center justify-center relative min-h-[340px] sm:min-h-[420px] w-full select-none">
+            {/* Background ambient lighting aura */}
+            <div className="absolute w-80 sm:w-[500px] h-80 sm:h-[500px] bg-sky/15 rounded-full filter blur-[110px] pointer-events-none -z-10" />
+            <div className="absolute w-52 sm:w-72 h-52 sm:h-72 bg-blue/20 rounded-full filter blur-[80px] pointer-events-none -z-10" />
 
-              {/* Technical Reticle grid overlay */}
-              {showGrid && (
-                <div className="absolute inset-0 pointer-events-none select-none">
-                  <svg className="w-full h-full" fill="none">
-                    <line x1="0" y1="50%" x2="100%" y2="50%" className="stroke-sky/20" strokeWidth="1" strokeDasharray="4 4" />
-                    <line x1="50%" y1="0" x2="50%" y2="100%" className="stroke-sky/20" strokeWidth="1" strokeDasharray="4 4" />
-                    <rect x="10%" y="15%" width="80%" height="70%" fill="none" className="stroke-sky/10" strokeWidth="1" />
-                    <circle cx="50%" cy="50%" r="90" className="stroke-sky/10" strokeWidth="0.5" strokeDasharray="2 4" />
-                    <text x="12%" y="20%" className="fill-sky/40 text-[8px] font-mono">X = RATIO BASE</text>
-                    <text x="88%" y="82%" className="fill-sky/40 text-[8px] font-mono" textAnchor="end">ALPACLADD GEOMETRÍA 3D</text>
-                  </svg>
-                </div>
-              )}
+            {/* Technical Reticle grid overlay without enclosed bounding box */}
+            {showGrid && (
+              <div className="absolute inset-0 pointer-events-none select-none overflow-visible flex items-center justify-center">
+                <svg className="w-full h-full max-h-[380px]" viewBox="0 0 600 360" fill="none">
+                  {/* Subtle Center Crosshairs */}
+                  <line x1="10" y1="180" x2="590" y2="180" className="stroke-sky/15" strokeWidth="1" strokeDasharray="5 5" />
+                  <line x1="300" y1="15" x2="300" y2="345" className="stroke-sky/15" strokeWidth="1" strokeDasharray="5 5" />
+                  
+                  {/* Radial Guides */}
+                  <circle cx="300" cy="180" r="130" className="stroke-sky/15" strokeWidth="0.8" strokeDasharray="3 5" />
+                  <circle cx="300" cy="180" r="170" className="stroke-sky/10" strokeWidth="0.6" strokeDasharray="2 6" />
 
+                  {/* Technical Perimeter Labels */}
+                  <text x="20" y="30" className="fill-sky/40 text-[9px] font-mono tracking-widest">X-AXIS // LOCKUP 1:1</text>
+                  <text x="580" y="30" className="fill-sky/40 text-[9px] font-mono tracking-widest" textAnchor="end">ALPACLADD // ARCHITECTURE</text>
+                  <text x="300" y="350" className="fill-sky/30 text-[8px] font-mono tracking-widest" textAnchor="middle">SISTEMA VECTORIAL DINÁMICO</text>
+                </svg>
+              </div>
+            )}
+
+            {/* Continuous Floating / Levitation Container */}
+            <motion.div
+              className="relative flex flex-col items-center justify-center w-full py-4 z-10"
+              animate={{
+                y: [-12, 12, -12],
+                rotateZ: [-0.3, 0.3, -0.3],
+              }}
+              transition={{
+                duration: 4.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
               {/* Brand Logo Component with animated transitions */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={variant}
-                  initial={{ opacity: 0, scale: 0.92, y: 8 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 1.05, y: -8 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="z-10 py-6 flex flex-col items-center justify-center w-full h-full"
+                  initial={{ opacity: 0, scale: 0.88, y: 14, filter: "blur(6px)" }}
+                  animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, scale: 1.08, y: -14, filter: "blur(6px)" }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className={`flex flex-col items-center justify-center w-full ${
+                    variant === "isotipo" ? "scale-110 sm:scale-125 py-4" : ""
+                  }`}
                 >
                   <BrandLogo
                     variant={variant === "isotipo" ? "isotype" : variant}
                     theme="navy"
-                    size={variant === "isotipo" || variant === "isologo" ? "xl" : "lg"}
+                    size="2xl"
                     withGlow={true}
                   />
                 </motion.div>
               </AnimatePresence>
-            </MockupCard>
+
+              {/* Dynamic Pedestal / Ambient Floor Glow synchronised with levitation */}
+              <motion.div
+                className="absolute -bottom-8 w-56 sm:w-80 h-7 rounded-full bg-sky/30 filter blur-xl pointer-events-none"
+                animate={{
+                  scaleX: [1.2, 0.8, 1.2],
+                  scaleY: [1.2, 0.75, 1.2],
+                  opacity: [0.65, 0.25, 0.65],
+                }}
+                transition={{
+                  duration: 4.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </motion.div>
           </div>
         </div>
       </div>
