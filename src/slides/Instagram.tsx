@@ -310,7 +310,7 @@ export const Instagram: React.FC = () => {
   };
 
   return (
-    <SlideShell id="instagram" n={19} title="Perfil de Instagram" kind="social" bgType="navy">
+    <SlideShell id="instagram" n={18} title="Perfil de Instagram" kind="social" bgType="navy">
       <div className="h-full flex flex-col justify-center items-center py-0">
         {/* Centered 3D Smartphone Mockup (Exact 9:19.5 iPhone Pro Aspect Ratio) */}
         <div

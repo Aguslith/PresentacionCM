@@ -91,7 +91,7 @@ export const Reels: React.FC = () => {
   };
 
   return (
-    <SlideShell id="reels" n={21} title="Estrategia: Video Reels" kind="social" bgType="navy">
+    <SlideShell id="reels" n={20} title="Estrategia: Video Reels" kind="social" bgType="navy">
       <div className="h-full flex flex-col justify-center items-center py-0 relative overflow-hidden select-none">
         
         {/* Main 3D Centered Smartphone Frame Container */}

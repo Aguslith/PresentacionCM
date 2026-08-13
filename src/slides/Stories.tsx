@@ -123,7 +123,7 @@ export const Stories: React.FC = () => {
   const percentB = 100 - percentA;
 
   return (
-    <SlideShell id="stories" n={20} title="Estrategia: Stories Interactivas" kind="social" bgType="navy">
+    <SlideShell id="stories" n={19} title="Estrategia: Stories Interactivas" kind="social" bgType="navy">
       <div className="h-full flex flex-col justify-center items-center py-0 relative">
         
         {/* Story Selector Pills */}

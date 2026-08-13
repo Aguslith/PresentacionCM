@@ -83,7 +83,7 @@ export const Publicidad: React.FC = () => {
   const current = funnelData[activeStage];
 
   return (
-    <SlideShell id="publicidad" n={22} title="Publicidad y Paid Media B2B" kind="social" bgType="navy">
+    <SlideShell id="publicidad" n={21} title="Publicidad y Paid Media B2B" kind="social" bgType="navy">
       <div className="h-full flex flex-col justify-between py-1">
         <div className="max-w-6xl mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           

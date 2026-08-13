@@ -1,0 +1,68 @@
+/* ==========================================================================
+   ALPACLADD — Design Tokens & Color Variables
+   Manual de Marca Oficial para Web, Diseñadores y Community Managers
+   ========================================================================== */
+
+:root {
+  /* --- PALETA CROMÁTICA INSTITUCIONAL --- */
+  --alpa-navy: #0D1D34;
+  --alpa-navy-rgb: 13, 29, 52;
+  
+  --alpa-blue: #1D5A8F;
+  --alpa-blue-rgb: 29, 90, 143;
+  
+  --alpa-sky: #5FA8D3;
+  --alpa-sky-rgb: 95, 168, 211;
+  
+  --alpa-gray: #666666;
+  --alpa-gray-rgb: 102, 102, 102;
+  
+  --alpa-off-white: #F2F2F2;
+  --alpa-off-white-rgb: 242, 242, 242;
+
+  --alpa-white: #FFFFFF;
+  --alpa-black: #050505;
+
+  /* --- GRADIENTES OFICIALES --- */
+  --alpa-gradient-hero: linear-gradient(135deg, #0D1D34 0%, #071120 100%);
+  --alpa-gradient-accent: linear-gradient(135deg, #1D5A8F 0%, #5FA8D3 100%);
+  --alpa-gradient-glow: radial-gradient(circle, rgba(95, 168, 211, 0.35) 0%, transparent 70%);
+
+  /* --- TIPOGRAFÍA INSTITUCIONAL --- */
+  --alpa-font-sans: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --alpa-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* --- JERARQUÍAS Y PESOS --- */
+  --alpa-weight-regular: 400;
+  --alpa-weight-medium: 500;
+  --alpa-weight-semibold: 600;
+  --alpa-weight-bold: 700;
+  --alpa-weight-extrabold: 800;
+
+  /* --- RADIUS & SOMBRAS --- */
+  --alpa-radius-sm: 6px;
+  --alpa-radius-md: 12px;
+  --alpa-radius-lg: 20px;
+  --alpa-radius-pill: 9999px;
+
+  --alpa-shadow-sm: 0 2px 8px rgba(13, 29, 52, 0.08);
+  --alpa-shadow-md: 0 10px 25px rgba(13, 29, 52, 0.15);
+  --alpa-shadow-lg: 0 20px 50px rgba(13, 29, 52, 0.25);
+  --alpa-shadow-glow: 0 0 30px rgba(95, 168, 211, 0.35);
+}
+
+/* Clases de Utilidad Rápida para Diseñadores */
+.bg-alpa-navy { background-color: var(--alpa-navy); }
+.bg-alpa-blue { background-color: var(--alpa-blue); }
+.bg-alpa-sky  { background-color: var(--alpa-sky); }
+.bg-alpa-off  { background-color: var(--alpa-off-white); }
+
+.text-alpa-navy { color: var(--alpa-navy); }
+.text-alpa-blue { color: var(--alpa-blue); }
+.text-alpa-sky  { color: var(--alpa-sky); }
+.text-alpa-gray { color: var(--alpa-gray); }
+.text-alpa-off  { color: var(--alpa-off-white); }
+
+.border-alpa-sky  { border-color: var(--alpa-sky); }
+.border-alpa-blue { border-color: var(--alpa-blue); }
+.border-alpa-navy { border-color: var(--alpa-navy); }

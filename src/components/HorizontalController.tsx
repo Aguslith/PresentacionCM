@@ -207,7 +207,7 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
 
         setTimeout(() => {
           isNavigatingRef.current = false;
-        }, 450);
+        }, 280);
       }
     };
 
@@ -290,7 +290,7 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
         className="flex flex-nowrap h-full w-full will-change-transform"
         style={{
           transform: `translate3d(-${activeIndex * 100}vw, 0, 0)`,
-          transition: "transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)",
+          transition: "transform 0.38s cubic-bezier(0.25, 1, 0.35, 1)",
         }}
       >
         {SLIDES.map((slide) => (
@@ -431,7 +431,7 @@ export const HorizontalController: React.FC<HorizontalControllerProps> = ({
                     Índice de Diapositivas
                   </h3>
                   <span className="text-xs font-mono text-slate-400">
-                    23 Diapositivas • Selecciona para saltar directamente
+                    {totalSlides} Diapositivas • Selecciona para saltar directamente
                   </span>
                 </div>
               </div>

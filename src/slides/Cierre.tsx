@@ -37,7 +37,7 @@ export const Cierre: React.FC = () => {
   };
 
   return (
-    <SlideShell id="cierre" n={23} title="ALPACLADD — Fin de Presentación" kind="cierre" bgType="navy">
+    <SlideShell id="cierre" n={22} title="ALPACLADD — Fin de Presentación" kind="cierre" bgType="navy">
       <div className="h-full flex flex-col justify-between py-1 relative">
         
         {/* Background Ambient Glows */}
@@ -191,8 +191,9 @@ export const Cierre: React.FC = () => {
               </div>
 
               {/* Team Closing Footer */}
-              <div className="pt-2 text-[10px] font-mono text-slate-400">
-                <span>Equipo de Comunicación & Marketing Digital</span>
+              <div className="pt-2 text-[10px] font-mono text-slate-400 space-y-0.5">
+                <span className="text-sky font-semibold block">Herrera Agustin • Yamila Avila Fuentes</span>
+                <span className="text-slate-400 block text-[9px]">Estrategia de Marca & Comunicación Digital // ALPACLADD 2026</span>
               </div>
             </motion.div>
           </div>

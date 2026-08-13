@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALPACLADD — Manual de Marca Interactivo para Community Managers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0D1D34;
+      --blue: #1D5A8F;
+      --sky: #5FA8D3;
+      --gray: #666666;
+      --off: #F2F2F2;
+      --white: #FFFFFF;
+      --card-bg: #11223b;
+      --card-border: rgba(95, 168, 211, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--navy);
+      color: var(--off);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #08111e; }
+    ::-webkit-scrollbar-thumb { background: #1D5A8F; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #5FA8D3; }
+
+    /* Layout */
+    .app-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: 280px;
+      background: #081220;
+      border-right: 1px solid var(--card-border);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .brand-header {
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .brand-logo-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .brand-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--sky);
+      background: rgba(95, 168, 211, 0.12);
+      border: 1px solid rgba(95, 168, 211, 0.3);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      margin-top: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: #94a3b8;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      color: var(--white);
+      background: rgba(95, 168, 211, 0.08);
+      border-color: rgba(95, 168, 211, 0.2);
+    }
+
+    .nav-btn.active {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--sky);
+      box-shadow: 0 4px 12px rgba(29, 90, 143, 0.4);
+    }
+
+    .sidebar-footer {
+      padding-top: 16px;
+      border-top: 1px solid var(--card-border);
+      font-size: 11px;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      flex: 1;
+      padding: 36px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-tag {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--sky);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: #cbd5e1;
+      max-width: 750px;
+      margin-top: 6px;
+    }
+
+    /* Cards Grid */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    /* Color Swatches */
+    .color-swatch-card {
+      background: #0d1b2e;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .color-swatch-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+      border-color: var(--sky);
+    }
+
+    .color-box {
+      width: 100%;
+      height: 90px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 8px;
+    }
+
+    .copy-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 6px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--navy);
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .color-name { font-weight: 800; font-size: 13px; color: var(--white); }
+    .color-hex { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--sky); font-weight: 700; }
+    .color-role { font-size: 10px; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px; }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10B981;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Buttons */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--blue);
+      color: white;
+      border: 1px solid var(--sky);
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: var(--sky);
+      color: var(--navy);
+    }
+
+    /* Logo Stage */
+    .logo-canvas {
+      background: #091322;
+      border: 1px dashed rgba(95, 168, 211, 0.3);
+      border-radius: 16px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      position: relative;
+    }
+
+    /* Copy Card */
+    .copy-card {
+      background: #0c182b;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .copy-pill {
+      font-size: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--sky);
+      background: rgba(95, 168, 211, 0.15);
+      padding: 3px 8px;
+      border-radius: 6px;
+      align-self: flex-start;
+      text-transform: uppercase;
+    }
+
+    .copy-text {
+      font-size: 12px;
+      color: #cbd5e1;
+      white-space: pre-line;
+      line-height: 1.6;
+      background: #060e1a;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Feed Grid Simulation */
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      background: #060f1c;
+      padding: 10px;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+    }
+
+    .feed-tile {
+      aspect-ratio: 1/1;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .feed-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .feed-tile:hover img {
+      transform: scale(1.08);
+    }
+
+    /* Specimen Box */
+    .specimen-box {
+      font-family: 'Raleway', sans-serif;
+      padding: 20px;
+      background: #060e1a;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    @media (max-width: 900px) {
+      .app-container { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: static; }
+      .main-content { padding: 24px 16px; }
+      .grid-5 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .feed-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- Left Navigation Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="brand-header">
+        <h1 class="brand-logo-title">ALPACLADD</h1>
+        <span class="brand-badge">MANUAL DE MARCA 2026</span>
+      </div>
+
+      <ul class="nav-list">
+        <li><button class="nav-btn active" onclick="showSection('resumen')">📌 1. Visión General</button></li>
+        <li><button class="nav-btn" onclick="showSection('colores')">🎨 2. Paleta de Colores</button></li>
+        <li><button class="nav-btn" onclick="showSection('tipografia')">🔤 3. Tipografía Oficial</button></li>
+        <li><button class="nav-btn" onclick="showSection('logos')">📐 4. Logos & Descargas</button></li>
+        <li><button class="nav-btn" onclick="showSection('copys')">✍️ 5. Banco de Copys CM</button></li>
+        <li><button class="nav-btn" onclick="showSection('feed')">📱 6. Simulador de Feed</button></li>
+        <li><button class="nav-btn" onclick="showSection('protocolo')">💬 7. Protocolo DMs & Clientes</button></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <div>ALPACLADD S.A. • La Rioja</div>
+      <div style="color: var(--sky); margin-top: 4px;">Fábrica de Hilados B2B</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Viewer -->
+  <main class="main-content">
+
+    <!-- SECTION 1: RESUMEN / IDENTIDAD -->
+    <div id="section-resumen" class="section active">
+      <div class="section-header">
+        <div class="section-tag">NÚCLEO CONCEPTUAL</div>
+        <h2 class="section-title">Identidad & Propósito de Marca</h2>
+        <p class="section-desc">Guía estratégica de comunicación para que el Community Manager comunique con rigor técnico, cercanía y autoridad industrial.</p>
+      </div>
+
+      <div class="grid-3" style="margin-bottom: 24px;">
+        <div class="card">
+          <div class="section-tag" style="color: var(--sky);">01 // MISIÓN</div>
+          <h3 style="font-size: 16px; font-weight: 800; margin: 6px 0 10px;">Excelencia Operacional</h3>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">Fabricar hilados premium combinando tecnología suiza de purgado óptico y fibras naturales de algodón peinado para garantizar regularidad absoluta.</p>
+        </div>
+
+        <div class="card">
+          <div class="section-tag" style="color: var(--sky);">02 // VISIÓN</div>
+          <h3 style="font-size: 16px; font-weight: 800; margin: 6px 0 10px;">Liderazgo Regional 2030</h3>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">Ser la hilandería de referencia en América Latina, liderando la transición hacia hilados sustentables (ECO-SPUN) y automatización robótica.</p>
+        </div>
+
+        <div class="card">
+          <div class="section-tag" style="color: var(--sky);">03 // VALORES</div>
+          <h3 style="font-size: 16px; font-weight: 800; margin: 6px 0 10px;">Cultura de Precisión</h3>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">Cero fallas mecánicas en telar, respeto al medio ambiente y trato directo como aliados de largo plazo con cada taller y marca de moda.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size: 15px; font-weight: 800; margin-bottom: 12px; color: var(--white);">Vectores de Comunicación para Redes Sociales</h3>
+        <div class="grid-3" style="font-size: 12px; color: #cbd5e1;">
+          <div style="background: rgba(0,0,0,0.25); padding: 12px; border-radius: 8px;">
+            <strong style="color: var(--sky); display: block; margin-bottom: 4px;">✅ SOMOS EXACTOS</strong>
+            Hablamos con datos numéricos: 650 TPM, título 30/1, tenacidad en cN/tex.
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 12px; border-radius: 8px;">
+            <strong style="color: var(--sky); display: block; margin-bottom: 4px;">✅ SOMOS DIDÁCTICOS</strong>
+            Explicamos por qué el peinado elimina el pilling y ahorra paradas de máquina.
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 12px; border-radius: 8px;">
+            <strong style="color: var(--sky); display: block; margin-bottom: 4px;">✅ SOMOS B2B</strong>
+            Dialogamos de profesional a profesional con jefes de tejeduría y diseñadores.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: PALETA DE COLORES -->
+    <div id="section-colores" class="section">
+      <div class="section-header">
+        <div class="section-tag">SISTEMA CROMÁTICO</div>
+        <h2 class="section-title">Paleta Cromática Oficial</h2>
+        <p class="section-desc">Haz clic sobre cualquier muestra para copiar automáticamente el código HEX a tu portapapeles.</p>
+      </div>
+
+      <div class="grid-5" style="margin-bottom: 24px;">
+        <!-- Navy Blue -->
+        <div class="color-swatch-card" onclick="copyToClipboard('#0D1D34', 'Navy Blue')">
+          <div class="color-box" style="background-color: #0D1D34;">
+            <span class="copy-chip">COPIAR</span>
+          </div>
+          <div class="color-name">NAVY BLUE</div>
+          <div class="color-hex">#0D1D34</div>
+          <div class="color-role">RGB: 13, 29, 52<br>CMYK: 95, 75, 45, 50<br>Fondo Dominante (60%)</div>
+        </div>
+
+        <!-- Corporate Blue -->
+        <div class="color-swatch-card" onclick="copyToClipboard('#1D5A8F', 'Corporate Blue')">
+          <div class="color-box" style="background-color: #1D5A8F;">
+            <span class="copy-chip">COPIAR</span>
+          </div>
+          <div class="color-name">CORP BLUE</div>
+          <div class="color-hex">#1D5A8F</div>
+          <div class="color-role">RGB: 29, 90, 143<br>CMYK: 88, 62, 18, 5<br>Estructura / Botones (25%)</div>
+        </div>
+
+        <!-- Sky Blue -->
+        <div class="color-swatch-card" onclick="copyToClipboard('#5FA8D3', 'Sky Blue')">
+          <div class="color-box" style="background-color: #5FA8D3;">
+            <span class="copy-chip">COPIAR</span>
+          </div>
+          <div class="color-name">SKY BLUE</div>
+          <div class="color-hex">#5FA8D3</div>
+          <div class="color-role">RGB: 95, 168, 211<br>CMYK: 58, 22, 5, 0<br>Acento / Foco (10%)</div>
+        </div>
+
+        <!-- Cool Gray -->
+        <div class="color-swatch-card" onclick="copyToClipboard('#666666', 'Cool Gray')">
+          <div class="color-box" style="background-color: #666666;">
+            <span class="copy-chip">COPIAR</span>
+          </div>
+          <div class="color-name">COOL GRAY</div>
+          <div class="color-hex">#666666</div>
+          <div class="color-role">RGB: 102, 102, 102<br>CMYK: 0, 0, 0, 70<br>Textos Técnicos (5%)</div>
+        </div>
+
+        <!-- Off White -->
+        <div class="color-swatch-card" onclick="copyToClipboard('#F2F2F2', 'Off White')">
+          <div class="color-box" style="background-color: #F2F2F2;">
+            <span class="copy-chip" style="background: #0D1D34; color: #fff;">COPIAR</span>
+          </div>
+          <div class="color-name" style="color: #F2F2F2;">OFF WHITE</div>
+          <div class="color-hex" style="color: #cbd5e1;">#F2F2F2</div>
+          <div class="color-role">RGB: 242, 242, 242<br>CMYK: 3, 2, 2, 0<br>Fondos Claros / Tarjetas</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size: 15px; font-weight: 800; margin-bottom: 8px;">Regla Proporcional para Piezas Gráficas (60 - 30 - 10)</h3>
+        <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">
+          En cada placa de feed, carrusel o historia: el <strong style="color:#fff;">60%</strong> de la superficie debe ser el fondo sobrio (Navy u Off-White), el <strong style="color:var(--sky);">30%</strong> corresponde a la estructura y bloques contenedores (Corporate Blue o tarjetas blancas), y el <strong style="color:var(--sky);">10%</strong> es el toque de acento Sky Blue reservado para números, palabras gancho o llamadas a la acción.
+        </p>
+      </div>
+    </div>
+
+    <!-- SECTION 3: TIPOGRAFÍA -->
+    <div id="section-tipografia" class="section">
+      <div class="section-header">
+        <div class="section-tag">IDENTIDAD TIPOGRÁFICA</div>
+        <h2 class="section-title">Tipografía Institucional: Raleway</h2>
+        <p class="section-desc">Familia sans-serif geométrica moderna. Puedes escribir en el cuadro de abajo para probar textos en tiempo real.</p>
+      </div>
+
+      <div class="card" style="margin-bottom: 20px;">
+        <label style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--sky); display: block; margin-bottom: 6px;">PROBADOR EN VIVO DE TIPOGRAFÍA (EDITABLE):</label>
+        <input type="text" id="typeTester" value="ALPACLADD — Precisión que transforma fibras en hilos." oninput="updateTypePreview(this.value)" style="width: 100%; background: #081220; border: 1px solid var(--card-border); color: #fff; padding: 12px; border-radius: 8px; font-family: 'Raleway', sans-serif; font-size: 15px; outline: none;">
+        
+        <div class="specimen-box" style="margin-top: 16px;">
+          <div id="previewExtraBold" style="font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: 0.05em;">ALPACLADD — Precisión que transforma fibras en hilos.</div>
+          <div style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--sky);">Raleway ExtraBold (800) — Títulos de Portada & Logotipos</div>
+        </div>
+
+        <div class="specimen-box" style="margin-top: 12px;">
+          <div id="previewBold" style="font-size: 20px; font-weight: 700; color: var(--off); margin-bottom: 6px;">ALPACLADD — Precisión que transforma fibras en hilos.</div>
+          <div style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--sky);">Raleway Bold (700) — Títulos de Publicación & Subtítulos H2</div>
+        </div>
+
+        <div class="specimen-box" style="margin-top: 12px;">
+          <div id="previewRegular" style="font-size: 14px; font-weight: 400; color: #cbd5e1; line-height: 1.6;">ALPACLADD — Precisión que transforma fibras en hilos.</div>
+          <div style="font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--sky); margin-top: 4px;">Raleway Regular (400) — Cuerpo de Párrafos & Fichas Técnicas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: LOGOS & DESCARGAS -->
+    <div id="section-logos" class="section">
+      <div class="section-header">
+        <div class="section-tag">ASSETS OFICIALES</div>
+        <h2 class="section-title">Ecosistema de Logotipos & Símbolos</h2>
+        <p class="section-desc">Todos los archivos vectoriales SVG y rasterizados PNG listos para ser utilizados en piezas digitales o impresas.</p>
+      </div>
+
+      <div class="grid-2" style="margin-bottom: 24px;">
+        <!-- Card 1: Imagotipo Horizontal -->
+        <div class="card">
+          <div class="section-tag">VERSIÓN PRIMARIA</div>
+          <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px;">Imagotipo Horizontal Full Color</h3>
+          <div class="logo-canvas" style="background: #ffffff; padding: 24px; min-height: 160px;">
+            <img src="02_Logos_e_Identidad/Imagotipo_Horizontal_Color.svg" alt="Imagotipo Color" style="max-width: 100%; height: 70px; object-fit: contain;">
+          </div>
+          <div style="margin-top: 14px; display: flex; gap: 8px; justify-content: space-between; align-items: center;">
+            <span style="font-size: 11px; color: #94a3b8;">Soportes claros / Cabeceras</span>
+            <a href="02_Logos_e_Identidad/Imagotipo_Horizontal_Color.svg" download class="btn-action">📥 Descargar SVG</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Imagotipo Blanco Invertido -->
+        <div class="card">
+          <div class="section-tag">VERSIÓN MODO OSCURO</div>
+          <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px;">Imagotipo Invertido para Fondo Navy</h3>
+          <div class="logo-canvas" style="background: #0D1D34; padding: 24px; min-height: 160px;">
+            <img src="02_Logos_e_Identidad/Imagotipo_Horizontal_Blanco.svg" alt="Imagotipo Blanco" style="max-width: 100%; height: 70px; object-fit: contain;">
+          </div>
+          <div style="margin-top: 14px; display: flex; gap: 8px; justify-content: space-between; align-items: center;">
+            <span style="font-size: 11px; color: #94a3b8;">Fondos Navy / Posts oscuros</span>
+            <a href="02_Logos_e_Identidad/Imagotipo_Horizontal_Blanco.svg" download class="btn-action">📥 Descargar SVG</a>
+          </div>
+        </div>
+
+        <!-- Card 3: Isotipo Solo -->
+        <div class="card">
+          <div class="section-tag">SÍMBOLO AISLADO</div>
+          <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px;">Isotipo Aislado 3D</h3>
+          <div class="logo-canvas" style="background: #081220; padding: 24px; min-height: 160px;">
+            <img src="02_Logos_e_Identidad/Isotipo_Color.svg" alt="Isotipo Color" style="max-width: 100%; height: 80px; object-fit: contain;">
+          </div>
+          <div style="margin-top: 14px; display: flex; gap: 8px; justify-content: space-between; align-items: center;">
+            <span style="font-size: 11px; color: #94a3b8;">Avatares / Iconos / Micrograbado</span>
+            <a href="02_Logos_e_Identidad/Isotipo_Color.svg" download class="btn-action">📥 Descargar SVG</a>
+          </div>
+        </div>
+
+        <!-- Card 4: PNG Oficial Rasterizado -->
+        <div class="card">
+          <div class="section-tag">ALTA RESOLUCIÓN</div>
+          <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px;">Isotipo Oficial en PNG</h3>
+          <div class="logo-canvas" style="background: #081220; padding: 24px; min-height: 160px;">
+            <img src="02_Logos_e_Identidad/logotipo_oficial.png" alt="Logotipo Oficial PNG" style="max-width: 100%; height: 80px; object-fit: contain;">
+          </div>
+          <div style="margin-top: 14px; display: flex; gap: 8px; justify-content: space-between; align-items: center;">
+            <span style="font-size: 11px; color: #94a3b8;">Para Canva / Photoshop / Office</span>
+            <a href="02_Logos_e_Identidad/logotipo_oficial.png" download class="btn-action">📥 Descargar PNG</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: BANCO DE COPYS CM -->
+    <div id="section-copys" class="section">
+      <div class="section-header">
+        <div class="section-tag">RECURSOS DE COPYWRITING</div>
+        <h2 class="section-title">Banco de Copys Listos para Publicar</h2>
+        <p class="section-desc">Estructurados con la fórmula H.E.C.A. (Hook + Educación + Conversión + Aterrizaje). Clic en copiar para llevar al portapapeles.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Copy 1 -->
+        <div class="copy-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="copy-pill">PILAR 01 // PRODUCTO</span>
+            <button class="btn-action" onclick="copyText('copy1')">📋 Copiar Texto</button>
+          </div>
+          <h4 style="font-size: 14px; font-weight: 800; color: #fff;">Ficha Técnica: Algodón Peinado 30/1</h4>
+          <div id="copy1" class="copy-text">¿Por qué el proceso de peinado define la durabilidad de tus prendas? 🧵
+
+Nuestro algodón peinado título 30/1 pasa por peinadoras que extraen fibras cortas (<12mm), alineando filamentos largos en paralelo.
+
+Beneficios para tu tejeduría:
+🔹 Cero pilling en prenda terminada.
+🔹 Torsión calibrada de 650 TPM.
+🔹 Menor fricción en agujas circulares.
+
+📌 Descargá la ficha técnica en el link de la bio.
+
+#AlgodonPeinado #Hilado30s #ConfeccionB2B #TejidoDePunto #ALPACLADD</div>
+        </div>
+
+        <!-- Copy 2 -->
+        <div class="copy-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="copy-pill">PILAR 02 // MAQUINARIA</span>
+            <button class="btn-action" onclick="copyText('copy2')">📋 Copiar Texto</button>
+          </div>
+          <h4 style="font-size: 14px; font-weight: 800; color: #fff;">Purgado Óptico Savio (Reel)</h4>
+          <div id="copy2" class="copy-text">0.02 segundos. Ese es el tiempo que tarda nuestro sensor en detectar y cortar una impureza en el hilado. ⚡
+
+En nuestras coneras automáticas Savio a 12.000 RPM, cada milímetro de hilo es escaneado por sensor infrarrojo. Si detecta un nep, la cuchilla descarta la falla y un splicer neumático empalma sin nudo.
+
+Menos paradas en telar = más metros producidos por turno. 🏭
+
+¿Querés testearlo? Pedí hoy tu bobina de 1kg sin cargo.
+
+#MaquinariaTextil #Automatizacion #SavioEcoSpindle #IngenieriaTextil #CeroFallas</div>
+        </div>
+
+        <!-- Copy 3 -->
+        <div class="copy-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="copy-pill">PILAR 04 // SUSTENTABILIDAD</span>
+            <button class="btn-action" onclick="copyText('copy3')">📋 Copiar Texto</button>
+          </div>
+          <h4 style="font-size: 14px; font-weight: 800; color: #fff;">Lanzamiento Oficial ECO-SPUN</h4>
+          <div id="copy3" class="copy-text">La sustentabilidad ya no es una opción; es la exigencia del mercado global. 🌱
+
+Presentamos formalmente ECO-SPUN:
+🌿 60% Algodón orgánico certificado GOTS.
+♻️ 40% Fibras de poliéster reciclado.
+💧 45% menos agua en procesamiento.
+📜 Trazabilidad por partida.
+
+Abastecé tu próxima colección con hilados sustentables de grado industrial.
+
+#EcoSpun #ModaSustentable #AlgodonOrganicoGOTS #RecycledYarn #ALPACLADD</div>
+        </div>
+
+        <!-- Copy 4 -->
+        <div class="copy-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="copy-pill">PILAR 03 // MANIFIESTO</span>
+            <button class="btn-action" onclick="copyText('copy4')">📋 Copiar Texto</button>
+          </div>
+          <h4 style="font-size: 14px; font-weight: 800; color: #fff;">La Precisión es Confianza</h4>
+          <div id="copy4" class="copy-text">"La precisión es el verdadero tejido de la confianza." 🧶
+
+Detrás de cada prenda que resiste el paso del tiempo hay un cálculo milimétrico de hilatura. En ALPACLADD producimos hilados pensados para el alto rendimiento en fábrica.
+
+¿Buscás estabilidad para tu taller? Dejanos tu mensaje y coordinamos el envío de una muestra técnica.
+
+#PrecisionTextil #HiladosB2B #IndustriaArgentina #Hilanderia #LaRioja</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: FEED SIMULATOR -->
+    <div id="section-feed" class="section">
+      <div class="section-header">
+        <div class="section-tag">PATRÓN DAMERO</div>
+        <h2 class="section-title">Simulador de Feed de Instagram</h2>
+        <p class="section-desc">Mosaico oficial 4x4 de publicaciones en alta definición respetando el contraste visual entre placas institucionales y fotos de planta.</p>
+      </div>
+
+      <div class="feed-grid">
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_1.jpg" alt="Post 1"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_2.jpg" alt="Post 2"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_3.jpg" alt="Post 3"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_4.jpg" alt="Post 4"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_5.jpg" alt="Post 5"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_6.jpg" alt="Post 6"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_7.jpg" alt="Post 7"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_8.jpg" alt="Post 8"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_9.jpg" alt="Post 9"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_10.jpg" alt="Post 10"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_11.jpg" alt="Post 11"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_12.jpg" alt="Post 12"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_13.jpg" alt="Post 13"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_14.jpg" alt="Post 14"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_15.jpg" alt="Post 15"></div>
+        <div class="feed-tile"><img src="05_Recursos_y_Mockups/Instagram_Posts/post_16.jpg" alt="Post 16"></div>
+      </div>
+    </div>
+
+    <!-- SECTION 7: PROTOCOLO ATENCIÓN -->
+    <div id="section-protocolo" class="section">
+      <div class="section-header">
+        <div class="section-tag">ATENCIÓN DIGITAL B2B</div>
+        <h2 class="section-title">Protocolo de Respuestas Rápidas</h2>
+        <p class="section-desc">Scripts oficiales para responder mensajes directos y derivar consultas comerciales a WhatsApp en menos de 15 minutos.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="copy-card">
+          <span class="copy-pill" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">CASO 1: MUESTRA TÉCNICA 1KG</span>
+          <h4 style="font-size: 13px; font-weight: 800;">Respuesta para solicitud de muestra gratis:</h4>
+          <div id="scriptMuestra" class="copy-text">¡Hola! Muchas gracias por escribirnos. Contamos con un programa de testeo para tejedurías y talleres. Te enviamos una bobina de 1kg sin costo a tu planta.
+
+Para despacharla hoy, ¿nos compartís por favor?
+1. Nombre y Apellido:
+2. Empresa / Taller:
+3. Dirección de entrega:
+4. Teléfono / WhatsApp:
+5. Hilado de interés (30/1, 24/1 o Mezcla):
+
+¡Quedamos atentos para coordinar la entrega!</div>
+          <button class="btn-action" style="align-self: flex-start;" onclick="copyText('scriptMuestra')">📋 Copiar Respuesta</button>
+        </div>
+
+        <div class="copy-card">
+          <span class="copy-pill">CASO 2: COTIZACIÓN MAYORISTA</span>
+          <h4 style="font-size: 13px; font-weight: 800;">Respuesta para consulta de precios y compra mínima:</h4>
+          <div id="scriptPrecios" class="copy-text">¡Hola! Con mucho gusto te enviamos la lista de precios mayorista y condiciones comerciales.
+
+Para brindarte la cotización exacta según el volumen mensual de tu taller, ¿podrías indicarnos un WhatsApp o email corporativo?
+
+También podés escribir directo a nuestro canal comercial: +54 (380) 442-9900. ¡Saludos!</div>
+          <button class="btn-action" style="align-self: flex-start;" onclick="copyText('scriptPrecios')">📋 Copiar Respuesta</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Toast notification popup -->
+<div id="toast" class="toast">
+  <span>✅</span>
+  <span id="toastMsg">Copiado al portapapeles</span>
+</div>
+
+<script>
+  function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+
+    // Show target section
+    const targetSection = document.getElementById('section-' + sectionId);
+    if (targetSection) {
+      targetSection.classList.add('active');
+    }
+
+    // Set active button
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function copyToClipboard(text, label) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('¡' + label + ' (' + text + ') copiado!');
+    });
+  }
+
+  function copyText(elementId) {
+    const el = document.getElementById(elementId);
+    if (el) {
+      navigator.clipboard.writeText(el.innerText).then(() => {
+        showToast('¡Texto copiado al portapapeles!');
+      });
+    }
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    toastMsg.innerText = msg;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2400);
+  }
+
+  function updateTypePreview(val) {
+    document.getElementById('previewExtraBold').innerText = val;
+    document.getElementById('previewBold').innerText = val;
+    document.getElementById('previewRegular').innerText = val;
+  }
+</script>
+
+</body>
+</html>

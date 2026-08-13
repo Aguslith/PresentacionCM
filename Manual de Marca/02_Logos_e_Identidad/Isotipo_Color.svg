@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7ec3eb" />
+      <stop offset="100%" stop-color="#5FA8D3" />
+    </linearGradient>
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D5A8F" />
+      <stop offset="100%" stop-color="#0D1D34" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0D1D34" flood-opacity="0.25" />
+    </filter>
+  </defs>
+  <!-- Background Glow & Base Symbol -->
+  <g filter="url(#glow)">
+    <!-- Right Solid Structure (Navy Leg) -->
+    <polygon points="100,30 135,30 170,165 130,165" fill="url(#navyGrad)" />
+    
+    <!-- Left Structure (Sky Blue Leg) -->
+    <polygon points="100,30 65,30 30,165 70,165" fill="url(#skyGrad)" />
+    
+    <!-- Thread Facets / Tension Bands (Dynamic White & Sky cuts) -->
+    <polygon points="56,75 110,85 104,98 48,88" fill="#FFFFFF" opacity="0.95" />
+    <polygon points="44,115 100,125 94,138 38,128" fill="#FFFFFF" opacity="0.95" />
+    <polygon points="75,50 120,58 116,68 70,60" fill="#E0F2FE" opacity="0.8" />
+  </g>
+</svg>

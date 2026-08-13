@@ -36,7 +36,7 @@ export const Pilares: React.FC = () => {
   ];
 
   return (
-    <SlideShell id="pilares" n={18} title="Nuestros Cuatro Pilares" kind="galeria" bgType="off">
+    <SlideShell id="pilares" n={17} title="Nuestros Cuatro Pilares" kind="galeria" bgType="off">
       <div className="h-full flex flex-col justify-between py-2">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 my-auto text-left">
           {pillarsList.map((p, idx) => (

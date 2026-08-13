@@ -41,27 +41,27 @@ export const SlideShell: React.FC<SlideShellProps> = ({
 
   // Hardware-accelerated motion variants with explicit Framer Motion typing
   const containerVariants: Variants = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        ease: [0.16, 1, 0.3, 1],
-        duration: 0.6,
+        ease: [0.25, 1, 0.35, 1],
+        duration: 0.3,
         when: "beforeChildren",
-        staggerChildren: 0.08,
+        staggerChildren: 0.04,
       },
     },
   };
 
   const titleVariants: Variants = {
-    hidden: { opacity: 0, y: -10 },
+    hidden: { opacity: 0, y: -8 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        ease: [0.16, 1, 0.3, 1],
-        duration: 0.5,
+        ease: [0.25, 1, 0.35, 1],
+        duration: 0.25,
       },
     },
   };

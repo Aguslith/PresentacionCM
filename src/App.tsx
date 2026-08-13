@@ -7,7 +7,6 @@ import { Concepto } from "./slides/Concepto";
 import { Mision } from "./slides/Mision";
 import { Publico } from "./slides/Publico";
 import { Estrategia } from "./slides/Estrategia";
-import { Tono } from "./slides/Tono";
 import { Pilares } from "./slides/Pilares";
 import { Logo } from "./slides/Logo";
 import { Construccion } from "./slides/Construccion";
@@ -40,8 +39,6 @@ function App() {
         return <Publico />;
       case "estrategia":
         return <Estrategia />;
-      case "tono":
-        return <Tono />;
       case "pilares":
         return <Pilares />;
       case "logo":
