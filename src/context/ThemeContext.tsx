@@ -12,6 +12,7 @@ const ThemeContext = createContext<ThemeContextType>({
   setBlackAndWhite: () => {},
 });
 
+// eslint-disable-next-line react/only-export-components
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
